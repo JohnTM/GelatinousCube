@@ -52,7 +52,7 @@ Shader "Custom/Transmissible" {
 
 			float dist = (center.y - IN.worldPos.y) / _Height + (_Progress - 0.5);
 
-			float3 offset = IN.worldPos + float3(0.0, 0.0, _Time.x * 10.0);
+			float3 offset = IN.worldPos * 0.5 + float3(_Time.x * 20.0, 0.0, _Time.x * 20.0);
 
 			float n = snoise(IN.worldPos + offset);
 

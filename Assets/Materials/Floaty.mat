@@ -6,7 +6,7 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Water
+  m_Name: Floaty
   m_Shader: {fileID: 4800000, guid: 3a6e47461b1eb9c4d9dc61b85fdf33aa, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -67,13 +67,13 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _Progress: 0
+    - _Progress: 0.547
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.19999978, g: 0, b: 1, a: 0.578}
+    - _Color: {r: 0.86206913, g: 0, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _InertColor: {r: 1, g: 1, b: 1, a: 0.27058825}

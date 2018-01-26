@@ -28,6 +28,12 @@ public class Transmissible : MonoBehaviour
     [SerializeField]
     private float m_progress = 1.0f;
 
+    public float progress
+    {
+        get { return m_progress; }
+    }
+
+
     private Renderer[] m_renderers;
     private Collider[] m_colliders;
     private Rigidbody m_rigidbody;
@@ -157,11 +163,12 @@ public class Transmissible : MonoBehaviour
                 break;
         }
 
+        // Inert properties
         if (m_progress < 1.0f)
         {
             foreach (var c in m_colliders)
             {
-                c.isTrigger = false;
+                c.isTrigger = true;
             }
 
             if (m_rigidbody)
@@ -187,7 +194,7 @@ public class Transmissible : MonoBehaviour
     void OnTriggerStay(Collider c)
     {
         Bouyant b = c.gameObject.GetComponent<Bouyant>();
-        if (b)
+        if (b && m_type.bouyancy > 0 && m_progress > 0.0f)
         {
             b.ApplyFloatyForce(m_rigidbody);
         }
