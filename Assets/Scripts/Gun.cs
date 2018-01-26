@@ -54,6 +54,127 @@ public class Gun : MonoBehaviour
         m_gunScale = m_gunModel.localScale;
 	}
 
+    Transmissible DetectObject()
+    {
+        //Collider[] objects = Physics.OverlapSphere(transform.position, m_detectionDistance, m_detectionMask, QueryTriggerInteraction.Collide);
+
+        //Transmissible minTarget = null;
+        //float minDist = 0;
+
+        //foreach (var p in objects)
+        //{
+        //    Vector3 dir = (p.transform.position - transform.position).normalized;
+        //    float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
+        //    float diff = Mathf.DeltaAngle(GetComponent<PlayerController>().angle, angle);
+        //    float vdist = p.transform.position.y - transform.position.y;
+
+        //    if (p.GetComponent<Transmissible>() == null) continue;
+        //    if (p.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds)) continue;
+
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(m_emitter.position, dir, out hit, 1000, m_detectionMask))
+        //    {
+        //        float dist = Vector3.Distance(p.transform.position, transform.position);
+
+        //        if (minTarget == null || dist < minDist)
+        //        {
+        //            minTarget = p.GetComponent<Transmissible>();
+        //            minDist = dist;
+        //            m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
+        //            m_targetHitNormal = hit.normal;
+        //        }
+        //    }
+
+        //    if (Mathf.Abs(diff) < m_detectionSpread || (vdist < 0 && Mathf.Abs(vdist) < m_verticalDetectionDistance))
+        //    {
+        //    }
+        //}
+
+        Vector3 origin = transform.position;
+        Vector3 dir = transform.forward;
+
+        Transmissible minTarget = null;
+        float minAngle = 0;
+
+        for (int i = 0; i < m_rays; i++)
+        {
+            float rayAngle = -m_detectionSpread + (m_detectionSpread * 2.0f) * (i / (float)m_rays);
+            Vector3 dir2 = Quaternion.AngleAxis(rayAngle, Vector3.up) * dir;
+            Vector3 hitPoint = origin + dir2 * m_detectionDistance;
+            Color hitColor = Color.gray;
+
+            RaycastHit hit;
+            if (Physics.Raycast(origin, dir2, out hit, m_detectionDistance, m_detectionMask))
+            {
+                Transmissible t = hit.collider.gameObject.GetComponent<Transmissible>();
+                if (t)
+                {
+                    hitPoint = hit.point;
+
+                    if (minTarget == null || rayAngle < minAngle)
+                    {
+                        minTarget = t;
+                        minAngle = rayAngle;
+                        hitColor = Color.yellow;
+                        m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
+                        m_targetHitNormal = hit.normal;
+                    }
+                }
+
+            }
+            Debug.DrawLine(origin, hitPoint, hitColor);
+        }
+
+        if (minTarget == null)
+        {
+            for (int i = 0; i < m_rays; i++)
+            {
+                float rayAngle = -m_detectionSpread + (m_detectionSpread * 2.0f) * (i / (float)m_rays);
+                Vector3 dir2 = Quaternion.AngleAxis(30, transform.right) * Quaternion.AngleAxis(rayAngle, Vector3.up) * dir;
+                Vector3 hitPoint = origin + dir2 * m_detectionDistance;
+                Color hitColor = Color.gray;
+
+                RaycastHit hit;
+                if (Physics.Raycast(origin, dir2, out hit, m_detectionDistance, m_detectionMask))
+                {
+                    Transmissible t = hit.collider.gameObject.GetComponent<Transmissible>();
+                    if (t)
+                    {
+                        hitPoint = hit.point;
+
+                        if (minTarget == null || rayAngle < minAngle)
+                        {
+                            minTarget = t;
+                            minAngle = rayAngle;
+                            hitColor = Color.yellow;
+                            m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
+                            m_targetHitNormal = hit.normal;
+                        }
+                    }
+
+                }
+                Debug.DrawLine(origin, hitPoint, hitColor);
+            }
+        }
+
+        if (minTarget)
+        {
+            // Reject direct down hits
+            RaycastHit hit;
+            if (Physics.Raycast(origin, -Vector3.up, out hit, m_detectionDistance, m_detectionMask))
+            {
+                if (hit.collider.GetComponent<Transmissible>() == minTarget)
+                {
+                    minTarget = null;
+                }
+            }
+
+        }
+
+
+        return minTarget;
+    }
+
     public void DetectObjects()
     {
         if (m_target)
@@ -61,41 +182,9 @@ public class Gun : MonoBehaviour
             m_target.GetComponent<Highlightable>().highlighted = false;
         }
 
-        Collider[] objects = Physics.OverlapSphere(transform.position, m_detectionDistance, m_detectionMask, QueryTriggerInteraction.Collide);
+        Transmissible newTarget = DetectObject();
 
-        Transmissible minTarget = null;
-        float minDist = 0;
-
-        foreach (var p in objects)
-        {
-            Vector3 dir = (p.transform.position - transform.position).normalized;
-            float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-            float diff = Mathf.DeltaAngle(GetComponent<PlayerController>().angle, angle);
-            float vdist = p.transform.position.y - transform.position.y;
-
-            if (p.GetComponent<Transmissible>() == null) continue;
-            if (p.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds)) continue;
-
-            RaycastHit hit;
-            if (Physics.Raycast(m_emitter.position, dir, out hit, 1000, m_detectionMask))
-            {
-                float dist = Vector3.Distance(p.transform.position, transform.position);
-
-                if (minTarget == null || dist < minDist)
-                {
-                    minTarget = p.GetComponent<Transmissible>();
-                    minDist = dist;
-                    m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
-                    m_targetHitNormal = hit.normal;
-                }
-            }
-
-            if (Mathf.Abs(diff) < m_detectionSpread || (vdist < 0 && Mathf.Abs(vdist) < m_verticalDetectionDistance))
-            {
-            }
-        }
-
-        if (m_target != minTarget)
+        if (m_target != newTarget)
         {
             if (m_target)
             {
@@ -112,9 +201,9 @@ public class Gun : MonoBehaviour
             }
         }
 
-        if (minTarget)
+        if (newTarget)
         {
-            m_target = minTarget;
+            m_target = newTarget;
             m_target.GetComponent<Highlightable>().highlighted = true;
         }
         else

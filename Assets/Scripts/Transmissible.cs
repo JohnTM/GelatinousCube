@@ -128,7 +128,13 @@ public class Transmissible : MonoBehaviour
         // Update appearance
 		foreach (var r in m_renderers)
         {
-            r.material.SetFloat("_Progress", m_progress);      
+            r.material.SetFloat("_Progress", m_progress);  
+            if (m_type.animateUVs != Vector2.zero)
+            {
+                Vector2 offset = r.material.GetTextureOffset("_MainTex");
+                offset += m_type.animateUVs * Time.deltaTime;
+                r.material.SetTextureOffset("_MainTex", offset);
+            }    
         }
 
         float drainDelta = 1.0f / m_type.timeToDrain * Time.deltaTime;
@@ -186,6 +192,7 @@ public class Transmissible : MonoBehaviour
             if (m_rigidbody)
             {
                 m_rigidbody.isKinematic = !m_type.hasRigidbody;
+                //m_rigidbody.SetDensity(m_type.density);
             }
         }        
               

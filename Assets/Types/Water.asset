@@ -20,3 +20,4 @@ MonoBehaviour:
   lightColor: {r: 0, g: 0, b: 0, a: 0}
   hasRigidbody: 0
   density: 0
+  animateUVs: {x: 0.075, y: 0.05}
