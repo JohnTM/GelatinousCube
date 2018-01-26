@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Highlightable)), RequireComponent(typeof(Collider)), RequireComponent(typeof(Highlightable))]
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(cakeslice.Outline)), RequireComponent(typeof(Collider)), RequireComponent(typeof(Highlightable))]
 public class Transmissible : MonoBehaviour
 {
     public delegate void OnTransmissibleComplete(Transmissible t);
@@ -19,7 +19,7 @@ public class Transmissible : MonoBehaviour
             foreach (var r in m_renderers)
             {
                 r.material = m_type.material;
-                r.material.SetFloat("_Height", r.bounds.size.y * 1.25f);
+                r.material.SetFloat("_Height", r.bounds.size.y * 1.35f);
             }
 
         }     
