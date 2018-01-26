@@ -51,7 +51,9 @@ public class PlayerController : MonoBehaviour
         m_rigidbody.AddForce(force * m_maxForce);
 
         Vector3 velocity = m_rigidbody.velocity;
+        float vy = velocity.y;
         velocity.y = 0;
+        
 
         if (velocity.magnitude > m_maxVelocity)
         {
@@ -69,7 +71,7 @@ public class PlayerController : MonoBehaviour
 
         velocity *= m_friction;
 
-        velocity.y = m_rigidbody.velocity.y;
+        velocity.y = vy;
 
         m_rigidbody.velocity = velocity;
 

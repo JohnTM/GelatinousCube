@@ -14,6 +14,9 @@ public class Gun : MonoBehaviour
     private float m_detectionDistance = 3.0f;
 
     [SerializeField]
+    private float m_verticalDetectionDistance = 1.0f;
+
+    [SerializeField]
     private float m_detectionSpread = 30.0f;
 
     [SerializeField]
@@ -48,7 +51,7 @@ public class Gun : MonoBehaviour
             m_target.GetComponent<Highlightable>().highlighted = false;
         }
 
-        Collider[] objects = Physics.OverlapSphere(transform.position, m_detectionDistance, m_detectionMask);
+        Collider[] objects = Physics.OverlapSphere(transform.position, m_detectionDistance, m_detectionMask, QueryTriggerInteraction.Collide);
 
         Transmissible minTarget = null;
         float minDist = 0;
@@ -58,8 +61,12 @@ public class Gun : MonoBehaviour
             Vector3 dir = (p.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
             float diff = Mathf.DeltaAngle(GetComponent<PlayerController>().angle, angle);
+            float vdist = p.transform.position.y - transform.position.y;
 
-            if (Mathf.Abs(diff) < m_detectionSpread)
+            if (p.GetComponent<Transmissible>() == null) continue;
+            if (p.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds)) continue;
+
+            if (Mathf.Abs(diff) < m_detectionSpread || (vdist < 0 && Mathf.Abs(vdist) < m_verticalDetectionDistance))
             {
                 float dist = Vector3.Distance(p.transform.position, transform.position);
 

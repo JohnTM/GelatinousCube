@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Highlightable)), RequireComponent(typeof(Collider)), RequireComponent(typeof(Highlightable))]
 public class Transmissible : MonoBehaviour
 {
     public delegate void OnTransmissibleComplete(Transmissible t);
@@ -11,13 +12,25 @@ public class Transmissible : MonoBehaviour
 
     public TransmissibleType type
     {
-        get { return m_type; }        
+        get { return m_type; }   
+        set
+        {
+            m_type = value;
+            foreach (var r in m_renderers)
+            {
+                r.material = m_type.material;
+                r.material.SetFloat("_Height", r.bounds.size.y * 1.25f);
+            }
+
+        }     
     }
 
     [SerializeField]
     private float m_progress = 1.0f;
 
     private Renderer[] m_renderers;
+    private Collider[] m_colliders;
+    private Rigidbody m_rigidbody;
 
     public enum State
     {
@@ -42,11 +55,10 @@ public class Transmissible : MonoBehaviour
     void Start()
     {
         m_renderers = GetComponentsInChildren<Renderer>();
+        m_colliders = GetComponentsInChildren<Collider>();
+        m_rigidbody = GetComponent<Rigidbody>();
 
-        foreach (var r in m_renderers)
-        {
-            r.material = m_type.material;
-        }
+        type = m_type;
 
         if (m_progress == 0)
         {
@@ -78,7 +90,7 @@ public class Transmissible : MonoBehaviour
 
     public void EndDrain()
     {
-        if (m_state == State.Draining)
+        if (m_state == State.Draining && m_progress > 0.2f)
         {
             m_state = State.DrainCancelled;
         }
@@ -88,11 +100,7 @@ public class Transmissible : MonoBehaviour
     {
         if (m_state == State.Empty)
         {
-            m_type = type;
-            foreach (var r in m_renderers)
-            {
-                r.material = m_type.material;
-            }
+            this.type = type;
             m_state = State.Infusing;
             m_callback = callback;
             return true;
@@ -102,7 +110,7 @@ public class Transmissible : MonoBehaviour
 
     public void EndInfuse()
     {
-        if (m_state == State.Infusing)
+        if (m_state == State.Infusing && m_progress < 0.8f)
         {
             m_state = State.InfuseCancelled;
         }
@@ -149,5 +157,39 @@ public class Transmissible : MonoBehaviour
                 break;
         }
 
+        if (m_progress < 1.0f)
+        {
+            foreach (var c in m_colliders)
+            {
+                c.isTrigger = false;
+            }
+
+            if (m_rigidbody)
+            {
+                m_rigidbody.isKinematic = true;
+            }
+        }   
+        else if (m_progress == 1.0f)
+        {
+            foreach (var c in m_colliders)
+            {
+                c.isTrigger = m_type.hasCollisions == false || m_type.bouyancy > 0;
+            }
+
+            if (m_rigidbody)
+            {
+                m_rigidbody.isKinematic = !m_type.hasRigidbody;
+            }
+        }        
+              
 	}
+
+    void OnTriggerStay(Collider c)
+    {
+        Bouyant b = c.gameObject.GetComponent<Bouyant>();
+        if (b)
+        {
+            b.ApplyFloatyForce(m_rigidbody);
+        }
+    }
 }
