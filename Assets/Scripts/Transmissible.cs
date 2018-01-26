@@ -28,6 +28,12 @@ public class Transmissible : MonoBehaviour
     [SerializeField]
     private float m_progress = 1.0f;
 
+    public float progress
+    {
+        get { return m_progress; }
+    }
+
+
     private Renderer[] m_renderers;
     private Collider[] m_colliders;
     private Rigidbody m_rigidbody;
@@ -122,7 +128,13 @@ public class Transmissible : MonoBehaviour
         // Update appearance
 		foreach (var r in m_renderers)
         {
-            r.material.SetFloat("_Progress", m_progress);      
+            r.material.SetFloat("_Progress", m_progress);  
+            if (m_type.animateUVs != Vector2.zero)
+            {
+                Vector2 offset = r.material.GetTextureOffset("_MainTex");
+                offset += m_type.animateUVs * Time.deltaTime;
+                r.material.SetTextureOffset("_MainTex", offset);
+            }    
         }
 
         float drainDelta = 1.0f / m_type.timeToDrain * Time.deltaTime;
@@ -157,11 +169,12 @@ public class Transmissible : MonoBehaviour
                 break;
         }
 
+        // Inert properties
         if (m_progress < 1.0f)
         {
             foreach (var c in m_colliders)
             {
-                c.isTrigger = false;
+                c.isTrigger = true;
             }
 
             if (m_rigidbody)
@@ -179,6 +192,7 @@ public class Transmissible : MonoBehaviour
             if (m_rigidbody)
             {
                 m_rigidbody.isKinematic = !m_type.hasRigidbody;
+                //m_rigidbody.SetDensity(m_type.density);
             }
         }        
               
@@ -187,7 +201,7 @@ public class Transmissible : MonoBehaviour
     void OnTriggerStay(Collider c)
     {
         Bouyant b = c.gameObject.GetComponent<Bouyant>();
-        if (b)
+        if (b && m_type.bouyancy > 0 && m_progress > 0.0f)
         {
             b.ApplyFloatyForce(m_rigidbody);
         }

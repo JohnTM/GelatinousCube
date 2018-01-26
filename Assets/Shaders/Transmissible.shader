@@ -7,6 +7,7 @@ Shader "Custom/Transmissible" {
 		_Color ("Color", Color) = (1,1,1,1)
 		_InertColor("InertColor", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_NormalMap("Normal Texture", 2D) = "bump" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Progress("Progress", Range(0, 1)) = 0.5
@@ -24,6 +25,7 @@ Shader "Custom/Transmissible" {
 		#pragma target 3.0
 
 		sampler2D _MainTex;
+		sampler2D _NormalMap;
 
 		struct Input {
 			float2 uv_MainTex;
@@ -52,7 +54,7 @@ Shader "Custom/Transmissible" {
 
 			float dist = (center.y - IN.worldPos.y) / _Height + (_Progress - 0.5);
 
-			float3 offset = IN.worldPos + float3(0.0, 0.0, _Time.x * 10.0);
+			float3 offset = IN.worldPos * 0.5 + float3(_Time.x * 20.0, 0.0, _Time.x * 20.0);
 
 			float n = snoise(IN.worldPos + offset);
 
@@ -67,11 +69,13 @@ Shader "Custom/Transmissible" {
 				o.Metallic = _Metallic;
 				o.Smoothness = _Glossiness;
 				o.Alpha = c.a;
+				o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
 			}
 			else
 			{
 				o.Albedo = _InertColor.rgb;
 				o.Alpha = _InertColor.a;
+				o.Normal = float3(0.0, 0.0, 1.0);
 			}
 
 			//o.Albedo = fixed3(dist, 0.0, 0.0);

@@ -20,4 +20,5 @@ public class TransmissibleType : ScriptableObject
     public Color lightColor;
     public bool hasRigidbody;
     public float density;
+    public Vector2 animateUVs;    
 }

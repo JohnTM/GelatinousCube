@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             velocity = velocity.normalized * m_maxVelocity;
         }
 
-        m_rigidbody.drag = velocity.magnitude / m_drag;
+        //m_rigidbody.drag = velocity.magnitude / m_drag;
 
         if (velocity.magnitude > 0.25f)
         {
