@@ -36,6 +36,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool m_grounded;
 
+    public bool isGrounded
+    {
+        get { return m_ground; }
+    }
+
     private GameObject m_ground;
 
     private Animator m_animator;
@@ -77,6 +82,7 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void FixedUpdate ()
     {
+        bool prevGrounded = m_grounded;
 
         m_grounded = false;
         m_ground = null;
@@ -140,6 +146,21 @@ public class PlayerController : MonoBehaviour
 
         if (m_grounded && m_ground)
         {
+            if (prevGrounded == false)
+            {
+                Audible a = m_ground.GetComponent<Audible>();
+                if (a)
+                {
+                    a.SoundEvent("Land", transform.position);
+                }
+
+                Transmissible t = m_ground.GetComponent<Transmissible>();
+                if (t && t.type.audibleType && t.progress == 1)
+                {
+                    Audible.SoundEvent(t.type.audibleType, "Land", transform.position);
+                }
+            }
+
             if (inFluid)
             {
                 if (m_input.wasJumpPressed)

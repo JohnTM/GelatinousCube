@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Foot : MonoBehaviour
 {
+    private PlayerController m_player;
 
 	// Use this for initialization
 	void Start () {
-		
+        m_player = GetComponentInParent<PlayerController>();
 	}
 	
 	// Update is called once per frame
@@ -26,7 +27,7 @@ public class Foot : MonoBehaviour
 
         Transmissible t = collider.GetComponent<Transmissible>();
 
-        if (t && t.type.audibleType)
+        if (t && t.type.audibleType && t.progress == 1 && m_player.isGrounded == true && m_player.inFluid == false)
         {
             Audible.SoundEvent(t.type.audibleType, "Footstep", transform.position);
         }
