@@ -12,6 +12,7 @@ Shader "Custom/Transmissible" {
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Progress("Progress", Range(0, 1)) = 0.5
 		_Height("Height", Float) = 1.0
+		_Center("Center", Vector) = (0,0,0)
 	}
 	SubShader {
 		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
@@ -41,6 +42,7 @@ Shader "Custom/Transmissible" {
 		half _Metallic;
 		float _Progress;
 		float _Height;
+		float3 _Vector;
 		fixed4 _Color;
 		fixed4 _InertColor;
 
