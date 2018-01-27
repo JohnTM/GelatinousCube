@@ -46,11 +46,14 @@ public class Gun : MonoBehaviour
 
     private AudioSource m_source;
 
+    private Animator m_animator;
+
     // Use this for initialization
     void Start () {
         m_gunScale = m_gunModel.localScale;
         m_input = GetComponent<PlayerInput>();
         m_source = GetComponent<AudioSource>();
+        m_animator = GetComponentInChildren<Animator>();
 	}
 
     Transmissible DetectObject()
@@ -274,19 +277,27 @@ public class Gun : MonoBehaviour
             AnimationCurve curve = new AnimationCurve(widthKeys);
             m_lineRenderer.widthCurve = curve;
 
-            m_gunModel.localScale = m_gunScale * (1.0f + 0.25f * Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad * 10.0f * direction)));
+            float scaleAmount = (1.0f + 0.5f * Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad * 10.0f * direction)));
+            m_gunModel.localScale = new Vector3(m_gunScale.x * scaleAmount, m_gunScale.y, m_gunScale.z * scaleAmount); 
+            m_gunModel.gameObject.SetActive(true);
+            m_animator.SetBool("Sucking", true);
+            m_animator.SetLayerWeight(1, 1.0f);
 
             Color c = m_target.type.material.color; ;
             //c.a = 1.0f;
 
             
             m_lineRenderer.material.SetColor("_EmissionColor", m_tank.type.material.GetColor("_EmissionColor") * m_tank.type.material.GetFloat("_Emission") * 0.5f);
+            m_lineRenderer.material.color = m_tank.type.beamColor;
             //m_lineRenderer.startColor = m_tank.type.beamColor;
             //m_lineRenderer.endColor = m_tank.type.beamColor;
         }
         else
         {
             m_lineRenderer.enabled = false;
+            m_gunModel.gameObject.SetActive(false);
+            m_animator.SetBool("Sucking", false);
+            m_animator.SetLayerWeight(1, 0.0f);
         }
     }
 
