@@ -11,6 +11,9 @@ public class Gun : MonoBehaviour
     private Transform m_gunModel;
 
     [SerializeField]
+    private Transform m_gunHolsteredModel;
+
+    [SerializeField]
     private LayerMask m_detectionMask;
 
     [SerializeField]
@@ -280,6 +283,7 @@ public class Gun : MonoBehaviour
             float scaleAmount = (1.0f + 0.5f * Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad * 10.0f * direction)));
            // m_gunModel.localScale = new Vector3(m_gunScale.x * scaleAmount, m_gunScale.y, m_gunScale.z * scaleAmount); 
             m_gunModel.gameObject.SetActive(true);
+            m_gunHolsteredModel.gameObject.SetActive(false);
             m_animator.SetBool("Sucking", true);
             m_animator.SetLayerWeight(1, 1.0f);
 
@@ -296,6 +300,7 @@ public class Gun : MonoBehaviour
         {
             m_lineRenderer.enabled = false;
             m_gunModel.gameObject.SetActive(false);
+            m_gunHolsteredModel.gameObject.SetActive(true);
             m_animator.SetBool("Sucking", false);
             m_animator.SetLayerWeight(1, 0.0f);
         }
