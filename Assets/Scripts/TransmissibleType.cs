@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
- 
+#endif
+
 public class TransmissibleType : ScriptableObject
 {
+#if UNITY_EDITOR
     [MenuItem("Assets/Create/Transmissible Type")]
     public static void CreateAsset()
     {
         ScriptableObjectUtility.CreateAsset<TransmissibleType>();
     }
+#endif
 
     public Material material;
     public float timeToDrain = 1.0f;
@@ -24,4 +28,6 @@ public class TransmissibleType : ScriptableObject
 
     public AudioClip drainClip;
     public AudioClip infuseClip;
+
+    public AudibleType audibleType;
 }
