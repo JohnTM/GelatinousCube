@@ -40,6 +40,26 @@ public class PlayerController : MonoBehaviour
 
     private Animator m_animator;
 
+
+    public bool inFluid
+    {
+        get
+        {
+            if (m_grounded && m_ground)
+            {
+                Transmissible t = m_ground.GetComponent<Transmissible>();
+
+                if (t && t.progress == 1.0 && t.type.bouyancy > 0)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
+
+
     public float angle
     {
         get { return m_angle; }
@@ -117,15 +137,7 @@ public class PlayerController : MonoBehaviour
 
         if (m_grounded && m_ground)
         {
-            Transmissible t = m_ground.GetComponent<Transmissible>();
-            bool isFluid = false;
-
-            if (t && t.progress == 1.0 && t.type.bouyancy > 0)
-            {
-                isFluid = true;
-            }
-
-            if (isFluid)
+            if (inFluid)
             {
                 if (m_input.wasJumpPressed)
                 {
