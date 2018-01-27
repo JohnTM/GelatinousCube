@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
 
     private GameObject m_ground;
 
+    private Animator m_animator;
+
     public float angle
     {
         get { return m_angle; }
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
         m_rigidbody = GetComponent<Rigidbody>();
         m_collider = GetComponent<CapsuleCollider>();
         m_input = GetComponent<PlayerInput>();
+        m_animator = GetComponentInChildren<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -74,7 +77,7 @@ public class PlayerController : MonoBehaviour
         if (m_grounded == false)
         {
             RaycastHit hit;
-            if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height / 2 - m_collider.radius + 0.01f, m_groundMask))
+            if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height / 2 - m_collider.radius + 0.01f, m_groundMask, QueryTriggerInteraction.Ignore))
             {
                 m_grounded = true;
                 m_ground = hit.collider.gameObject;
@@ -132,6 +135,8 @@ public class PlayerController : MonoBehaviour
                 {
                     velocity.y = vy;
                 }
+
+                m_animator.SetFloat("Speed", 0.0f);
             }
             else
             {
@@ -143,11 +148,15 @@ public class PlayerController : MonoBehaviour
                     // TODO: check water
                     velocity.y = m_jumpSpeed;
                 }
+
+                m_animator.SetFloat("Speed", velocity.magnitude / m_maxVelocity);
             }
         }
         else
         {
             velocity.y = vy;
+
+            m_animator.SetFloat("Speed", 0.5f);
         }        
 
         m_rigidbody.velocity = velocity;        
