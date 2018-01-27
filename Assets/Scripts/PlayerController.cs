@@ -43,8 +43,11 @@ public class PlayerController : MonoBehaviour
 
     private GameObject m_ground;
 
+    private Vector3 m_groundNormal;
+
     private Animator m_animator;
 
+    private float m_stunTimer;
 
     public bool inFluid
     {
@@ -79,6 +82,12 @@ public class PlayerController : MonoBehaviour
         m_animator = GetComponentInChildren<Animator>();
 	}
 	
+    public void ApplyKnockback(float duration, Vector3 impulse)
+    {
+        m_stunTimer = duration;
+        m_rigidbody.AddForce(impulse, ForceMode.Impulse);
+    }
+
 	// Update is called once per frame
 	void FixedUpdate ()
     {
@@ -97,6 +106,7 @@ public class PlayerController : MonoBehaviour
             {
                 m_grounded = true;
                 m_ground = t.gameObject;
+                m_groundNormal = Vector3.up;
             }
         }
 
@@ -109,6 +119,7 @@ public class PlayerController : MonoBehaviour
                 {
                     m_grounded = true;
                     m_ground = hit.collider.gameObject;
+                    m_groundNormal = hit.normal;
                 }
             }
         }
@@ -118,10 +129,49 @@ public class PlayerController : MonoBehaviour
         // TODO: Check grounded state
 
         Vector3 force = (Camera.main.transform.right * localDir.x + Camera.main.transform.forward * localDir.y);
-        force.y = 0;
-        force.Normalize();
 
-        m_rigidbody.AddForce(force * m_maxForce);
+        if (m_stunTimer > 0)
+        {
+            m_stunTimer -= Time.deltaTime;
+            force.x = 0;
+            force.z = 0;
+        }
+
+        force.y = 0;        
+
+        if (force.magnitude > 0)
+        {
+            force.Normalize();
+
+            bool abyss = false;
+            RaycastHit hit;
+            if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.Ignore))
+            {
+                Debug.DrawLine(m_rigidbody.position + force * m_collider.radius * 2, m_rigidbody.position + force * m_collider.radius * 2 + Vector3.down * 100);           
+                abyss = true;
+            }
+            else
+            {
+                Transmissible t = hit.collider.GetComponent<Transmissible>();
+                if (t && t.progress == 0)
+                {
+                    abyss = true;
+                }
+            }
+
+            if (m_grounded)
+            {
+                Vector3 right = Vector3.Cross(force, Vector3.up);
+                force = Vector3.Cross(m_groundNormal, right);
+            }
+
+            if (abyss)
+            {
+                force = Vector3.zero;
+            }
+
+            m_rigidbody.AddForce(force * m_maxForce);
+        }
 
         Vector3 velocity = m_rigidbody.velocity;
         float vy = velocity.y;
@@ -135,7 +185,7 @@ public class PlayerController : MonoBehaviour
 
         //m_rigidbody.drag = velocity.magnitude / m_drag;
 
-        if (velocity.magnitude > 0.25f)
+        if (velocity.magnitude > 0.25f && m_stunTimer <= 0)
         {
             m_angle = Mathf.Atan2(velocity.x, velocity.z) * Mathf.Rad2Deg;
         }

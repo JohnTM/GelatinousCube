@@ -5,7 +5,7 @@ using UnityEngine;
 public class InsectSwarm : MonoBehaviour {
 
     private float lastKnockbackTime;
-    public float timeBetweenKnockbacks = 0.3f;
+    public float timeBetweenKnockbacks = 1.0f;
     public float knockbackForce = 100f;
     public Transform knockbackOrigin;
 
@@ -23,17 +23,12 @@ public class InsectSwarm : MonoBehaviour {
     {
         if (Time.time > (lastKnockbackTime + timeBetweenKnockbacks) && (other.tag == "Player"))
         {
-            Rigidbody playerRB = other.GetComponent<Rigidbody>();
-            {
-                if (playerRB != null)
-                {
-                    playerRB.velocity = Vector3.zero;
-                    Vector3 knockbackVector = new Vector3(other.transform.position.x - knockbackOrigin.position.x, 0, other.transform.position.z - knockbackOrigin.position.z) + (Vector3.up * 0.1f);
-                    playerRB.AddForce(knockbackVector * knockbackForce, ForceMode.Impulse);
-                    AudioSource.PlayClipAtPoint(hurtSounds[Random.Range(0, hurtSounds.Count - 1)], other.transform.position);
-                    lastKnockbackTime = Time.time;
-                }
-            }
+            Vector3 knockbackVector = new Vector3(other.transform.position.x - knockbackOrigin.position.x, 0, other.transform.position.z - knockbackOrigin.position.z);
+            knockbackVector.Normalize();
+            knockbackVector.y += 0.5f;
+            other.GetComponent<PlayerController>().ApplyKnockback(timeBetweenKnockbacks, knockbackVector * knockbackForce);
+            AudioSource.PlayClipAtPoint(hurtSounds[Random.Range(0, hurtSounds.Count - 1)], other.transform.position);
+            lastKnockbackTime = Time.time;
         }
     }
 
