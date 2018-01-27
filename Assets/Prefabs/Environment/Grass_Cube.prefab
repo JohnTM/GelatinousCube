@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 64747581845229536}
   - component: {fileID: 114255561639634598}
   - component: {fileID: 114716231405441296}
-  - component: {fileID: 114359466929566292}
   m_Layer: 0
   m_Name: Grass_Cube
   m_TagString: Untagged
@@ -110,18 +109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_type: {fileID: 11400000, guid: a38bde1213c72a34c9fd3a2f45b927c8, type: 2}
---- !u!114 &114359466929566292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1367167049687796}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ca66ce5b14dd1447b1f07d6b55e4bbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_type: {fileID: 0}
 --- !u!114 &114716231405441296
 MonoBehaviour:
   m_ObjectHideFlags: 1
