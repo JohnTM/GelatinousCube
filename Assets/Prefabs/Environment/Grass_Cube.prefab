@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 95295401786042968}
   - component: {fileID: 64747581845229536}
   - component: {fileID: 114255561639634598}
+  - component: {fileID: 114716231405441296}
   m_Layer: 0
   m_Name: Grass_Cube
   m_TagString: Untagged
@@ -37,8 +38,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367167049687796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -27.20825, y: -6.350456, z: 16.91174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -82,7 +83,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367167049687796}
-  m_Mesh: {fileID: 4300000, guid: 1192d5f4dfdca9a42ab88c29c410c036, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 744c8be9db439cf4694475a107239ac8, type: 3}
 --- !u!64 &64747581845229536
 MeshCollider:
   m_ObjectHideFlags: 1
@@ -126,3 +127,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_type: {fileID: 11400000, guid: a38bde1213c72a34c9fd3a2f45b927c8, type: 2}
+--- !u!114 &114716231405441296
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367167049687796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: 1
+  eraseRenderer: 0
+  originalLayer: 0
+  originalMaterials: []
