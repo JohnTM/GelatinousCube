@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23978127743544294}
   - component: {fileID: 95295401786042968}
   - component: {fileID: 64747581845229536}
+  - component: {fileID: 114255561639634598}
   m_Layer: 0
   m_Name: Grass_Cube
   m_TagString: Untagged
@@ -113,3 +114,15 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114255561639634598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1367167049687796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca66ce5b14dd1447b1f07d6b55e4bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: {fileID: 11400000, guid: a38bde1213c72a34c9fd3a2f45b927c8, type: 2}

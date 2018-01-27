@@ -16,6 +16,14 @@ public class Audible : MonoBehaviour
                 int randClipIdx = Random.Range(0, type.clips.Length);
                 float randVolume = Random.Range(type.minVolume, type.maxVolume);
                 AudioSource.PlayClipAtPoint(type.clips[randClipIdx], position, randVolume);
+
+                if (type.particles)
+                {
+                    ParticleSystem particles = Instantiate(type.particles);
+                    particles.transform.position = position;
+                    particles.Play();
+                }
+
             }
         }
     }

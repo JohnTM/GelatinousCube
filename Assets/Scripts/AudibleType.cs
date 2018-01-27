@@ -16,6 +16,8 @@ public class AudibleType : ScriptableObject {
     {
         public string name;
         public AudioClip[] clips;
+        public ParticleSystem particles;
+        public bool alignParticlesWithNormal;
         public float minPitch = 0.8f;
         public float maxPitch = 1.2f;
         public float minVolume = 0.8f;
