@@ -55,32 +55,31 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate ()
     {
 
-        RaycastHit hit;
-        if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height/2 - m_collider.radius + 0.01f, m_groundMask))
-        {
-            m_grounded = true;
-            m_ground = hit.collider.gameObject;
-        }
-        else
-        {
-            m_grounded = false;
-            m_ground = null;
+        m_grounded = false;
+        m_ground = null;
 
-            // Check if we're floating in something
-            Collider[] colliders = Physics.OverlapSphere(m_rigidbody.position, m_collider.radius, m_groundMask);
+        // Check if we're floating in something
+        Collider[] colliders = Physics.OverlapSphere(m_rigidbody.position, m_collider.radius, m_groundMask);
 
-            foreach (var c in colliders)
+        foreach (var c in colliders)
+        {
+            Transmissible t = c.GetComponent<Transmissible>();
+            if (t && t.progress == 1 && t.type.bouyancy > 0)
             {
-                Transmissible t = c.GetComponent<Transmissible>();
-                if (t && t.progress == 1 && t.type.bouyancy > 0)
-                {
-                    m_grounded = true;
-                    m_ground = t.gameObject;
-                }
+                m_grounded = true;
+                m_ground = t.gameObject;
             }
-
         }
 
+        if (m_grounded == false)
+        {
+            RaycastHit hit;
+            if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height / 2 - m_collider.radius + 0.01f, m_groundMask))
+            {
+                m_grounded = true;
+                m_ground = hit.collider.gameObject;
+            }
+        }
 
         Vector2 localDir = m_input.movement;
 
