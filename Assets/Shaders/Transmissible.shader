@@ -12,11 +12,16 @@ Shader "Custom/Transmissible" {
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Progress("Progress", Range(0, 1)) = 0.5
 		_Height("Height", Float) = 1.0
+		_Center("Center", Vector) = (0,0,0)
 	}
 	SubShader {
 		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
 		LOD 200
 		
+		Pass {
+			ColorMask 0
+		}
+
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
 		#pragma surface surf Standard fullforwardshadows alpha
@@ -30,12 +35,14 @@ Shader "Custom/Transmissible" {
 		struct Input {
 			float2 uv_MainTex;
 			float3 worldPos;
+			float3 viewDir;
 		};
 
 		half _Glossiness;
 		half _Metallic;
 		float _Progress;
 		float _Height;
+		float3 _Vector;
 		fixed4 _Color;
 		fixed4 _InertColor;
 
@@ -56,7 +63,7 @@ Shader "Custom/Transmissible" {
 
 			float3 offset = IN.worldPos * 0.5 + float3(_Time.x * 20.0, 0.0, _Time.x * 20.0);
 
-			float n = snoise(IN.worldPos + offset);
+			float n = snoise(IN.worldPos + offset) * _Progress;
 
 			dist += n * 0.1;
 
@@ -72,10 +79,12 @@ Shader "Custom/Transmissible" {
 				o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
 			}
 			else
-			{
+			{				
 				o.Albedo = _InertColor.rgb;
 				o.Alpha = _InertColor.a;
 				o.Normal = float3(0.0, 0.0, 1.0);
+				half rim = 1.0 - saturate(dot(normalize(IN.viewDir), o.Normal) * 1.1);
+				o.Emission = float3(rim, rim, rim);
 			}
 
 			//o.Albedo = fixed3(dist, 0.0, 0.0);

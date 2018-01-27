@@ -37,59 +37,24 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private LineRenderer m_lineRenderer;
 
-    public bool isDrainPressed
-    {
-        get { return Input.GetMouseButton(0); }
-    }
+    [SerializeField]
+    private AnimationCurve m_soundCurve;
 
-    public bool isInfusePressed
-    {
-        get { return Input.GetMouseButton(1); }
-    }
+    private PlayerInput m_input;
 
     private Vector3 m_gunScale;
+
+    private AudioSource m_source;
 
     // Use this for initialization
     void Start () {
         m_gunScale = m_gunModel.localScale;
+        m_input = GetComponent<PlayerInput>();
+        m_source = GetComponent<AudioSource>();
 	}
 
     Transmissible DetectObject()
     {
-        //Collider[] objects = Physics.OverlapSphere(transform.position, m_detectionDistance, m_detectionMask, QueryTriggerInteraction.Collide);
-
-        //Transmissible minTarget = null;
-        //float minDist = 0;
-
-        //foreach (var p in objects)
-        //{
-        //    Vector3 dir = (p.transform.position - transform.position).normalized;
-        //    float angle = Mathf.Atan2(dir.x, dir.z) * Mathf.Rad2Deg;
-        //    float diff = Mathf.DeltaAngle(GetComponent<PlayerController>().angle, angle);
-        //    float vdist = p.transform.position.y - transform.position.y;
-
-        //    if (p.GetComponent<Transmissible>() == null) continue;
-        //    if (p.GetComponent<Collider>().bounds.Intersects(GetComponent<Collider>().bounds)) continue;
-
-        //    RaycastHit hit;
-        //    if (Physics.Raycast(m_emitter.position, dir, out hit, 1000, m_detectionMask))
-        //    {
-        //        float dist = Vector3.Distance(p.transform.position, transform.position);
-
-        //        if (minTarget == null || dist < minDist)
-        //        {
-        //            minTarget = p.GetComponent<Transmissible>();
-        //            minDist = dist;
-        //            m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
-        //            m_targetHitNormal = hit.normal;
-        //        }
-        //    }
-
-        //    if (Mathf.Abs(diff) < m_detectionSpread || (vdist < 0 && Mathf.Abs(vdist) < m_verticalDetectionDistance))
-        //    {
-        //    }
-        //}
-
         Vector3 origin = transform.position;
         Vector3 dir = transform.forward;
 
@@ -205,31 +170,42 @@ public class Gun : MonoBehaviour
         {
             m_target = newTarget;
             m_target.GetComponent<Highlightable>().highlighted = true;
+
+            m_source.pitch = m_target.progress + 0.5f;
+            m_source.volume = m_soundCurve.Evaluate(m_target.progress);
         }
         else
         {
             m_target = null;
         }
 
-        if (isDrainPressed && m_target && m_currentType == null)
+        
+
+        if (m_input.isDrainPressed && m_target && m_currentType == null)
         {
             if (m_target.state == Transmissible.State.Full)
             {
+                m_source.clip = m_target.type.drainClip;
+                m_source.Play();
+
                 TransmissibleType type = m_target.BeginDrain((Transmissible t) =>
                 {
-                    m_currentType = m_target.type;
+                    m_currentType = t.type;                    
                 });
 
                 m_tank.BeginInfuse(m_target.type, (Transmissible t) => { });
             }
         }
-        else if (!isDrainPressed && m_target && m_target.state == Transmissible.State.Draining)
+        else if (!m_input.isDrainPressed && m_target && m_target.state == Transmissible.State.Draining)
         {
             m_target.EndDrain();
-            m_tank.EndInfuse();
+            m_tank.EndInfuse();            
         }
-        else if (isInfusePressed && m_target && m_target.state == Transmissible.State.Empty && m_currentType != null)
+        else if (m_input.isInfusePressed && m_target && m_target.state == Transmissible.State.Empty && m_currentType != null)
         {
+            m_source.clip = m_target.type.infuseClip;
+            m_source.Play();
+
             m_target.BeginInfuse(m_currentType, (Transmissible t) =>
             {
                 // TODO: update visuals
@@ -237,7 +213,7 @@ public class Gun : MonoBehaviour
             });
             m_tank.BeginDrain((Transmissible t) => { });
         }
-        else if (!isInfusePressed && m_target && m_target.state == Transmissible.State.Infusing)
+        else if (!m_input.isInfusePressed && m_target && m_target.state == Transmissible.State.Infusing)
         {
             m_target.EndInfuse();
             m_tank.EndDrain();
