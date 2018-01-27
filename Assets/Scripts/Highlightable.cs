@@ -24,5 +24,6 @@ public class Highlightable : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         m_outline.enabled = m_highlighted;
+        //GetComponent<Renderer>().material.SetFloat("_Highlight", m_highlighted ? 1 : 0);
 	}
 }
