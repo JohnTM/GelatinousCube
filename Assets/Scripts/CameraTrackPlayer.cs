@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraTrackPlayer : MonoBehaviour {
 
     [SerializeField] Transform playerObject;
-    [SerializeField] float smoothTime = 0.3f;
+    [SerializeField] float smoothTime = 1.0f;
     private Vector3 cameraOffset;
     private Vector3 velocity = Vector3.zero;
 

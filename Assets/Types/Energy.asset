@@ -9,17 +9,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76a756c65977bcc47922c97b5f647774, type: 3}
-  m_Name: Light
+  m_Name: Energy
   m_EditorClassIdentifier: 
-  material: {fileID: 2100000, guid: d9193b1edb25bd54a81e99c38b0adbce, type: 2}
+  material: {fileID: 2100000, guid: 946613b9f65fa2f4faa9371079c58509, type: 2}
   timeToDrain: 1
-  hasCollisions: 0
-  bouyancy: 1
+  hasCollisions: 1
+  bouyancy: 0
   damage: 0
-  lightEmission: 0
-  lightColor: {r: 0, g: 0, b: 0, a: 0}
+  attractBugs: 0
   hasRigidbody: 0
   density: 0
-  animateUVs: {x: 0.075, y: 0.05}
-  drainClip: {fileID: 0}
-  infuseClip: {fileID: 0}
+  beamColor: {r: 1, g: 1, b: 0, a: 1}
+  animateUVs: {x: 0, y: 0}
+  drainClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}
+  infuseClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}

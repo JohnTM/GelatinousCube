@@ -11,6 +11,8 @@ Shader "Custom/Transmissible" {
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Progress("Progress", Range(0, 1)) = 0.5
+		_Emission("Emission", Float) = 0.0
+		_EmissionColor("Emission Color", Color) = (0,0,0,0)
 		_Height("Height", Float) = 1.0
 		_Center("Center", Vector) = (0,0,0)
 	}
@@ -45,6 +47,8 @@ Shader "Custom/Transmissible" {
 		float3 _Vector;
 		fixed4 _Color;
 		fixed4 _InertColor;
+		fixed4 _EmissionColor;
+		float _Emission;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -77,6 +81,7 @@ Shader "Custom/Transmissible" {
 				o.Smoothness = _Glossiness;
 				o.Alpha = c.a;
 				o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+				o.Emission = _EmissionColor.rgb * _Emission;
 			}
 			else
 			{				

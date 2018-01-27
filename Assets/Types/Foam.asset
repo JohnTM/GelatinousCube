@@ -16,10 +16,10 @@ MonoBehaviour:
   hasCollisions: 1
   bouyancy: 0
   damage: 0
-  lightEmission: 0
-  lightColor: {r: 0, g: 0, b: 0, a: 0}
+  attractBugs: 0
   hasRigidbody: 1
   density: 1
+  beamColor: {r: 0.78703606, g: 0.08693774, b: 0.9852941, a: 1}
   animateUVs: {x: 0, y: 0}
   drainClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}
   infuseClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}

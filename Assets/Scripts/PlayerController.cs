@@ -99,8 +99,11 @@ public class PlayerController : MonoBehaviour
             RaycastHit hit;
             if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height / 2 - m_collider.radius + 0.01f, m_groundMask, QueryTriggerInteraction.Ignore))
             {
-                m_grounded = true;
-                m_ground = hit.collider.gameObject;
+                if (hit.normal.y > 0.5f)
+                {
+                    m_grounded = true;
+                    m_ground = hit.collider.gameObject;
+                }
             }
         }
 
@@ -159,6 +162,7 @@ public class PlayerController : MonoBehaviour
                     m_grounded = false;
                     // TODO: check water
                     velocity.y = m_jumpSpeed;
+                    m_animator.SetTrigger("Jump");
                 }
 
                 m_animator.SetFloat("Speed", velocity.magnitude / m_maxVelocity);
@@ -169,7 +173,10 @@ public class PlayerController : MonoBehaviour
             velocity.y = vy;
 
             m_animator.SetFloat("Speed", 0.5f);
-        }        
+        }
+
+        m_animator.SetFloat("YSpeed", velocity.y);
+        m_animator.SetBool("Grounded", m_grounded && !inFluid); 
 
         m_rigidbody.velocity = velocity;        
 	}

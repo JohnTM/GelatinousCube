@@ -16,10 +16,10 @@ public class TransmissibleType : ScriptableObject
     public bool hasCollisions;
     public float bouyancy;
     public float damage;
-    public float lightEmission;
-    public Color lightColor;
+    public bool attractBugs;
     public bool hasRigidbody;
     public float density;
+    public Color beamColor;
     public Vector2 animateUVs;
 
     public AudioClip drainClip;

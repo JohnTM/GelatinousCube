@@ -46,11 +46,14 @@ public class Gun : MonoBehaviour
 
     private AudioSource m_source;
 
+    private Animator m_animator;
+
     // Use this for initialization
     void Start () {
         m_gunScale = m_gunModel.localScale;
         m_input = GetComponent<PlayerInput>();
         m_source = GetComponent<AudioSource>();
+        m_animator = GetComponentInChildren<Animator>();
 	}
 
     Transmissible DetectObject()
@@ -76,10 +79,10 @@ public class Gun : MonoBehaviour
                 {
                     hitPoint = hit.point;
 
-                    if (minTarget == null || rayAngle < minAngle)
+                    if (minTarget == null || Mathf.Abs(rayAngle) < minAngle)
                     {
                         minTarget = t;
-                        minAngle = rayAngle;
+                        minAngle = Mathf.Abs(rayAngle);
                         hitColor = Color.yellow;
                         m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
                         m_targetHitNormal = hit.normal;
@@ -92,6 +95,8 @@ public class Gun : MonoBehaviour
 
         if (minTarget == null)
         {
+            minAngle = 0;
+
             for (int i = 0; i < m_rays; i++)
             {
                 float rayAngle = -m_detectionSpread + (m_detectionSpread * 2.0f) * (i / (float)m_rays);
@@ -107,10 +112,10 @@ public class Gun : MonoBehaviour
                     {
                         hitPoint = hit.point;
 
-                        if (minTarget == null || rayAngle < minAngle)
+                        if (minTarget == null || Mathf.Abs(rayAngle) < minAngle)
                         {
                             minTarget = t;
-                            minAngle = rayAngle;
+                            minAngle = Mathf.Abs(rayAngle);
                             hitColor = Color.yellow;
                             m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
                             m_targetHitNormal = hit.normal;
@@ -248,7 +253,7 @@ public class Gun : MonoBehaviour
             m_lineRenderer.positionCount = segments;
 
             Vector3 p0 = m_emitter.position;
-            Vector3 p1 = m_emitter.position + m_emitter.forward * 0.5f;
+            Vector3 p1 = m_emitter.position + m_emitter.up * 1.5f;
             Vector3 p2 = m_target.transform.TransformPoint(m_targetHitPoint) + m_targetHitNormal * 0.5f;
             Vector3 p3 = m_target.transform.TransformPoint(m_targetHitPoint);
 
@@ -267,22 +272,32 @@ public class Gun : MonoBehaviour
             for (int i = 0; i < segments; i++)
             {
                 widthKeys[i].time = (float)i / segments;
-                widthKeys[i].value = Mathf.Abs(Mathf.Sin(((float)i / segments * Mathf.PI * distance) + Time.timeSinceLevelLoad * 10.0f * direction)) * 0.25f + 0.1f;
+                widthKeys[i].value = Mathf.Abs(Mathf.Sin(((float)i / segments * Mathf.PI * distance) + Time.timeSinceLevelLoad * 10.0f * direction)) * 0.25f + 0.1f + ((float)i/segments * 0.5f);
             }
             AnimationCurve curve = new AnimationCurve(widthKeys);
             m_lineRenderer.widthCurve = curve;
 
-            m_gunModel.localScale = m_gunScale * (1.0f + 0.25f * Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad * 10.0f * direction)));
+            float scaleAmount = (1.0f + 0.5f * Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad * 10.0f * direction)));
+            m_gunModel.localScale = new Vector3(m_gunScale.x * scaleAmount, m_gunScale.y, m_gunScale.z * scaleAmount); 
+            m_gunModel.gameObject.SetActive(true);
+            m_animator.SetBool("Sucking", true);
+            m_animator.SetLayerWeight(1, 1.0f);
 
             Color c = m_target.type.material.color; ;
             //c.a = 1.0f;
 
-            m_lineRenderer.startColor = c;
-            m_lineRenderer.endColor = c;
+            
+            m_lineRenderer.material.SetColor("_EmissionColor", m_tank.type.material.GetColor("_EmissionColor") * m_tank.type.material.GetFloat("_Emission") * 0.5f);
+            m_lineRenderer.material.color = m_tank.type.beamColor;
+            //m_lineRenderer.startColor = m_tank.type.beamColor;
+            //m_lineRenderer.endColor = m_tank.type.beamColor;
         }
         else
         {
             m_lineRenderer.enabled = false;
+            m_gunModel.gameObject.SetActive(false);
+            m_animator.SetBool("Sucking", false);
+            m_animator.SetLayerWeight(1, 0.0f);
         }
     }
 
