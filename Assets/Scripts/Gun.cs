@@ -269,7 +269,7 @@ public class Gun : MonoBehaviour
             for (int i = 0; i < segments; i++)
             {
                 widthKeys[i].time = (float)i / segments;
-                widthKeys[i].value = Mathf.Abs(Mathf.Sin(((float)i / segments * Mathf.PI * distance) + Time.timeSinceLevelLoad * 10.0f * direction)) * 0.25f + 0.1f;
+                widthKeys[i].value = Mathf.Abs(Mathf.Sin(((float)i / segments * Mathf.PI * distance) + Time.timeSinceLevelLoad * 10.0f * direction)) * 0.25f + 0.1f + ((float)i/segments * 0.5f);
             }
             AnimationCurve curve = new AnimationCurve(widthKeys);
             m_lineRenderer.widthCurve = curve;
@@ -279,8 +279,10 @@ public class Gun : MonoBehaviour
             Color c = m_target.type.material.color; ;
             //c.a = 1.0f;
 
-            m_lineRenderer.startColor = c;
-            m_lineRenderer.endColor = c;
+            
+            m_lineRenderer.material.SetColor("_EmissionColor", m_tank.type.material.GetColor("_EmissionColor") * m_tank.type.material.GetFloat("_Emission") * 0.5f);
+            //m_lineRenderer.startColor = m_tank.type.beamColor;
+            //m_lineRenderer.endColor = m_tank.type.beamColor;
         }
         else
         {
