@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4990875321262224}
   - component: {fileID: 33332198684045254}
   - component: {fileID: 23785083256417686}
-  - component: {fileID: 95676601948881442}
   - component: {fileID: 64937737945806272}
   m_Layer: 0
   m_Name: DirtRamp
@@ -96,20 +95,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 8fe463e61d55c7d499dcf5e8fb6c01da, type: 3}
---- !u!95 &95676601948881442
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1967065320369860}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 8fe463e61d55c7d499dcf5e8fb6c01da, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

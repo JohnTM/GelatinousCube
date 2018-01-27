@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4271532590196482}
   - component: {fileID: 33692027327681086}
   - component: {fileID: 23251560905758022}
-  - component: {fileID: 95107046935573954}
   - component: {fileID: 64162763676551644}
   m_Layer: 0
   m_Name: StoneHalfWedge
@@ -96,20 +95,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4180f4db208b07647be05bb5eadb9935, type: 3}
---- !u!95 &95107046935573954
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1989441758875608}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 4180f4db208b07647be05bb5eadb9935, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

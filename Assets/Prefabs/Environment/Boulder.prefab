@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4946245533286460}
   - component: {fileID: 33226053894040890}
   - component: {fileID: 23099438704738750}
-  - component: {fileID: 95254230292109198}
   - component: {fileID: 54422975050714972}
   - component: {fileID: 64062369652189256}
   - component: {fileID: 114915770975942792}
@@ -115,23 +114,6 @@ MeshCollider:
   m_InflateMesh: 1
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: a084a45ba57078f41b0b244fca0be622, type: 3}
---- !u!95 &95254230292109198
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1750989772318912}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a084a45ba57078f41b0b244fca0be622, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114430524355874472
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,10 +137,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 0
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
 --- !u!114 &114915770975942792
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,5 +148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1a3d6b5c7064264e92225f06098ff17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onFilled:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   m_type: {fileID: 11400000, guid: 9421e03e1a3ef584f849bd28ffcea637, type: 2}
   m_progress: 1

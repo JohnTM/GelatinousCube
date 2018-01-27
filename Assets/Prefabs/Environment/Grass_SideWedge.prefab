@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4801405882697872}
   - component: {fileID: 33602047099938822}
   - component: {fileID: 23313243187300354}
-  - component: {fileID: 95777931740669574}
   - component: {fileID: 64279021390399260}
+  - component: {fileID: 114202059571395050}
   m_Layer: 0
   m_Name: Grass_SideWedge
   m_TagString: Untagged
@@ -96,20 +96,15 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 5162e47aad5246a408ecc425c2348073, type: 3}
---- !u!95 &95777931740669574
-Animator:
-  serializedVersion: 3
+--- !u!114 &114202059571395050
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1289891798050134}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 5162e47aad5246a408ecc425c2348073, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca66ce5b14dd1447b1f07d6b55e4bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: {fileID: 11400000, guid: a38bde1213c72a34c9fd3a2f45b927c8, type: 2}

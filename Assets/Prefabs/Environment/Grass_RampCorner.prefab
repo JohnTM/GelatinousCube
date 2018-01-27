@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4544039375482588}
   - component: {fileID: 33707099268134004}
   - component: {fileID: 23953308368373678}
-  - component: {fileID: 95154548668433270}
   - component: {fileID: 64215018288673080}
+  - component: {fileID: 114889941038050376}
   m_Layer: 0
   m_Name: Grass_RampCorner
   m_TagString: Untagged
@@ -96,20 +96,15 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 27e2041541db2f647802f15590b7450f, type: 3}
---- !u!95 &95154548668433270
-Animator:
-  serializedVersion: 3
+--- !u!114 &114889941038050376
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1813086383180214}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 27e2041541db2f647802f15590b7450f, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca66ce5b14dd1447b1f07d6b55e4bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: {fileID: 11400000, guid: a38bde1213c72a34c9fd3a2f45b927c8, type: 2}

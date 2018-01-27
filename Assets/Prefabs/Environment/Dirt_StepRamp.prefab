@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4622220538755378}
   - component: {fileID: 33775028478278354}
   - component: {fileID: 23051623831688936}
-  - component: {fileID: 95847513260982172}
   - component: {fileID: 64624613203381808}
   m_Layer: 0
   m_Name: Dirt_StepRamp
@@ -96,20 +95,3 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 01405d569ac00bc4b93218f581502b0f, type: 3}
---- !u!95 &95847513260982172
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1929841991168416}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 01405d569ac00bc4b93218f581502b0f, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1

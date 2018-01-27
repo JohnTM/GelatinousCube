@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4086815069095988}
   - component: {fileID: 33383126308634562}
   - component: {fileID: 23680108678920112}
-  - component: {fileID: 95670930146274458}
   - component: {fileID: 64694079929983744}
   - component: {fileID: 114206002321009888}
   - component: {fileID: 114180438350911022}
@@ -98,23 +97,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 37d5ae68ccc98a64e942bfd5778f3b58, type: 3}
---- !u!95 &95670930146274458
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1114508687205598}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1192d5f4dfdca9a42ab88c29c410c036, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114180438350911022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,10 +108,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 1
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
 --- !u!114 &114206002321009888
 MonoBehaviour:
   m_ObjectHideFlags: 1

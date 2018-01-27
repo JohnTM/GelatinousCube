@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4965913063247542}
   - component: {fileID: 33298332949834218}
   - component: {fileID: 23623530565096952}
-  - component: {fileID: 95357322660827308}
   - component: {fileID: 64029563043058378}
+  - component: {fileID: 114340801160442578}
   m_Layer: 0
   m_Name: Grass_StepRamp
   m_TagString: Untagged
@@ -96,20 +96,15 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 2fdc54a819b21ee4c94c9dad9c1ecb36, type: 3}
---- !u!95 &95357322660827308
-Animator:
-  serializedVersion: 3
+--- !u!114 &114340801160442578
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1580014128231436}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 2fdc54a819b21ee4c94c9dad9c1ecb36, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca66ce5b14dd1447b1f07d6b55e4bbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: {fileID: 11400000, guid: a38bde1213c72a34c9fd3a2f45b927c8, type: 2}
