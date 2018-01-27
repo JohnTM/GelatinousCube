@@ -250,7 +250,7 @@ public class Gun : MonoBehaviour
             m_lineRenderer.positionCount = segments;
 
             Vector3 p0 = m_emitter.position;
-            Vector3 p1 = m_emitter.position + m_emitter.forward * 0.5f;
+            Vector3 p1 = m_emitter.position + m_emitter.up * 1.5f;
             Vector3 p2 = m_target.transform.TransformPoint(m_targetHitPoint) + m_targetHitNormal * 0.5f;
             Vector3 p3 = m_target.transform.TransformPoint(m_targetHitPoint);
 

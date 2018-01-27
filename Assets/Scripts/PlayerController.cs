@@ -162,6 +162,7 @@ public class PlayerController : MonoBehaviour
                     m_grounded = false;
                     // TODO: check water
                     velocity.y = m_jumpSpeed;
+                    m_animator.SetTrigger("Jump");
                 }
 
                 m_animator.SetFloat("Speed", velocity.magnitude / m_maxVelocity);
@@ -172,7 +173,10 @@ public class PlayerController : MonoBehaviour
             velocity.y = vy;
 
             m_animator.SetFloat("Speed", 0.5f);
-        }        
+        }
+
+        m_animator.SetFloat("YSpeed", velocity.y);
+        m_animator.SetBool("Grounded", m_grounded && !inFluid); 
 
         m_rigidbody.velocity = velocity;        
 	}
