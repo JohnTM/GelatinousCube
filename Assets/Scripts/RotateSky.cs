@@ -16,4 +16,9 @@ public class RotateSky : MonoBehaviour {
         }
         RenderSettings.skybox.SetFloat("_Rotation", rotation);
 	}
+
+    void OnDestroy()
+    {
+        RenderSettings.skybox.SetFloat("_Rotation", 0f);
+    }
 }

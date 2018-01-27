@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private LayerMask m_groundMask;
 
+    [SerializeField]
+    private bool m_fallPreventionEnabled = true;
+
     private Rigidbody m_rigidbody;
 
     private CapsuleCollider m_collider;
@@ -144,18 +147,21 @@ public class PlayerController : MonoBehaviour
             force.Normalize();
 
             bool abyss = false;
-            RaycastHit hit;
-            if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.Ignore))
+            if (m_fallPreventionEnabled)
             {
-                Debug.DrawLine(m_rigidbody.position + force * m_collider.radius * 2, m_rigidbody.position + force * m_collider.radius * 2 + Vector3.down * 100);           
-                abyss = true;
-            }
-            else
-            {
-                Transmissible t = hit.collider.GetComponent<Transmissible>();
-                if (t && t.progress == 0)
+                RaycastHit hit;
+                if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.Ignore))
                 {
+                    Debug.DrawLine(m_rigidbody.position + force * m_collider.radius * 2, m_rigidbody.position + force * m_collider.radius * 2 + Vector3.down * 100);
                     abyss = true;
+                }
+                else
+                {
+                    Transmissible t = hit.collider.GetComponent<Transmissible>();
+                    if (t && t.progress == 0)
+                    {
+                        abyss = true;
+                    }
                 }
             }
 

@@ -17,14 +17,21 @@ public class Highlightable : MonoBehaviour {
     }
 
 	// Use this for initialization
-	void Start () {
+	void Start () {        
         m_outline = GetComponent<Outline>();
+        if (m_outline == null)
+        {
+            m_outline = gameObject.AddComponent<Outline>();
+            m_outline.enabled = false;
+        }
 	}
 	
 	// Update is called once per frame
 	void Update () {
         m_outline.enabled = true;
+        //ADAM EDIT
         m_outline.color = m_highlighted ? 0 : 1;
+        //ADAM EDIT
         //GetComponent<Renderer>().material.SetFloat("_Highlight", m_highlighted ? 1 : 0);
 	}
 }
