@@ -23,5 +23,12 @@ public class Foot : MonoBehaviour
         {
             audible.SoundEvent("Footstep", transform.position);
         }
+
+        Transmissible t = collider.GetComponent<Transmissible>();
+
+        if (t && t.type.audibleType)
+        {
+            Audible.SoundEvent(t.type.audibleType, "Footstep", transform.position);
+        }
     }
 }

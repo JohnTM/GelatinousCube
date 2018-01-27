@@ -278,7 +278,7 @@ public class Gun : MonoBehaviour
             m_lineRenderer.widthCurve = curve;
 
             float scaleAmount = (1.0f + 0.5f * Mathf.Abs(Mathf.Sin(Time.timeSinceLevelLoad * 10.0f * direction)));
-            m_gunModel.localScale = new Vector3(m_gunScale.x * scaleAmount, m_gunScale.y, m_gunScale.z * scaleAmount); 
+           // m_gunModel.localScale = new Vector3(m_gunScale.x * scaleAmount, m_gunScale.y, m_gunScale.z * scaleAmount); 
             m_gunModel.gameObject.SetActive(true);
             m_animator.SetBool("Sucking", true);
             m_animator.SetLayerWeight(1, 1.0f);

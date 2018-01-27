@@ -9,17 +9,22 @@ public class Audible : MonoBehaviour
 
     public void SoundEvent(string name, Vector3 position)
     {
-        foreach (var type in m_type.soundTypes)
-        {
-            if (type.name == name && type.clips.Length > 0)
-            {
-                int randClipIdx = Random.Range(0, type.clips.Length);
-                float randVolume = Random.Range(type.minVolume, type.maxVolume);
-                AudioSource.PlayClipAtPoint(type.clips[randClipIdx], position, randVolume);
+        SoundEvent(m_type, name, position);
+    }
 
-                if (type.particles)
+    public static void SoundEvent(AudibleType type, string name, Vector3 position)
+    {
+        foreach (var t in type.soundTypes)
+        {
+            if (t.name == name && t.clips.Length > 0)
+            {
+                int randClipIdx = Random.Range(0, t.clips.Length);
+                float randVolume = Random.Range(t.minVolume, t.maxVolume);
+                AudioSource.PlayClipAtPoint(t.clips[randClipIdx], position, randVolume);
+
+                if (t.particles)
                 {
-                    ParticleSystem particles = Instantiate(type.particles);
+                    ParticleSystem particles = Instantiate(t.particles);
                     particles.transform.position = position;
                     particles.Play();
                 }
