@@ -8,6 +8,7 @@ public class InsectSwarm : MonoBehaviour {
     public float timeBetweenKnockbacks = 1.0f;
     public float knockbackForce = 100f;
     public Transform knockbackOrigin;
+    private Transform mainCamTransform;
 
     public List<AudioClip> hurtSounds = new List<AudioClip>();
 
@@ -17,6 +18,7 @@ public class InsectSwarm : MonoBehaviour {
         {
             knockbackOrigin = transform;
         }
+        mainCamTransform = Camera.main.transform;
     }
     
     void OnTriggerStay(Collider other)
@@ -27,7 +29,7 @@ public class InsectSwarm : MonoBehaviour {
             knockbackVector.Normalize();
             knockbackVector.y += 0.5f;
             other.GetComponent<PlayerController>().ApplyKnockback(timeBetweenKnockbacks, knockbackVector * knockbackForce);
-            AudioSource.PlayClipAtPoint(hurtSounds[Random.Range(0, hurtSounds.Count - 1)], other.transform.position);
+            AudioSource.PlayClipAtPoint(hurtSounds[Random.Range(0, hurtSounds.Count - 1)], mainCamTransform.position);
             lastKnockbackTime = Time.time;
         }
     }
