@@ -28,7 +28,7 @@ public class Highlightable : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //m_outline.enabled = m_highlighted;
+        m_outline.enabled = true;
         //ADAM EDIT
         m_outline.color = m_highlighted ? 0 : 1;
         //ADAM EDIT
