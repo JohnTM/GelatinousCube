@@ -68,6 +68,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Height: 20
+    - _Highlight: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -82,4 +83,4 @@ Material:
     - _Center: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 0.14424735, g: 0.1589965, b: 0.21323526, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InertColor: {r: 1, g: 1, b: 1, a: 0.3137255}
+    - _InertColor: {r: 0.7046655, g: 0.23529407, b: 1, a: 0.072}
