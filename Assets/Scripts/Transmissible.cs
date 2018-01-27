@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+public class TransmissibleEvent : UnityEvent<Transmissible>
+{ }
+
 
 [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(cakeslice.Outline)), RequireComponent(typeof(Collider)), RequireComponent(typeof(Highlightable))]
 public class Transmissible : MonoBehaviour
 {
     public delegate void OnTransmissibleComplete(Transmissible t);
+
+    public UnityEvent onFilled;
 
     [SerializeField]
     private TransmissibleType m_type;
@@ -148,6 +155,10 @@ public class Transmissible : MonoBehaviour
                     m_callback(this);
                     m_callback = null;
                     m_state = State.Full;
+                    if (onFilled != null)
+                    {
+                        onFilled.Invoke();
+                    }
                 }
                 break;
             case State.Draining:
