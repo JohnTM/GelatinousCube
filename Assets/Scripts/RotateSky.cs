@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RotateSky : MonoBehaviour {
 
-    public Material skybox;
     public float rotationSpeed;
     private float rotation = 0;
 	
