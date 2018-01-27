@@ -15,6 +15,7 @@ Shader "Custom/Transmissible" {
 		_EmissionColor("Emission Color", Color) = (0,0,0,0)
 		_Height("Height", Float) = 1.0
 		_Center("Center", Vector) = (0,0,0)
+		_Highlight("Highlight", Float) = 0.0
 	}
 	SubShader {
 		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
@@ -49,6 +50,7 @@ Shader "Custom/Transmissible" {
 		fixed4 _InertColor;
 		fixed4 _EmissionColor;
 		float _Emission;
+		float _Highlight;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
