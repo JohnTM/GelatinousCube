@@ -21,3 +21,5 @@ MonoBehaviour:
   hasRigidbody: 0
   density: 0
   animateUVs: {x: 0.075, y: 0.05}
+  drainClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}
+  infuseClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}

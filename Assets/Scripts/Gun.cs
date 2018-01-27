@@ -37,14 +37,20 @@ public class Gun : MonoBehaviour
     [SerializeField]
     private LineRenderer m_lineRenderer;
 
+    [SerializeField]
+    private AnimationCurve m_soundCurve;
+
     private PlayerInput m_input;
 
     private Vector3 m_gunScale;
+
+    private AudioSource m_source;
 
     // Use this for initialization
     void Start () {
         m_gunScale = m_gunModel.localScale;
         m_input = GetComponent<PlayerInput>();
+        m_source = GetComponent<AudioSource>();
 	}
 
     Transmissible DetectObject()
@@ -164,19 +170,27 @@ public class Gun : MonoBehaviour
         {
             m_target = newTarget;
             m_target.GetComponent<Highlightable>().highlighted = true;
+
+            m_source.pitch = m_target.progress + 0.5f;
+            m_source.volume = m_soundCurve.Evaluate(m_target.progress);
         }
         else
         {
             m_target = null;
         }
 
+        
+
         if (m_input.isDrainPressed && m_target && m_currentType == null)
         {
             if (m_target.state == Transmissible.State.Full)
             {
+                m_source.clip = m_target.type.drainClip;
+                m_source.Play();
+
                 TransmissibleType type = m_target.BeginDrain((Transmissible t) =>
                 {
-                    m_currentType = t.type;
+                    m_currentType = t.type;                    
                 });
 
                 m_tank.BeginInfuse(m_target.type, (Transmissible t) => { });
@@ -185,10 +199,13 @@ public class Gun : MonoBehaviour
         else if (!m_input.isDrainPressed && m_target && m_target.state == Transmissible.State.Draining)
         {
             m_target.EndDrain();
-            m_tank.EndInfuse();
+            m_tank.EndInfuse();            
         }
         else if (m_input.isInfusePressed && m_target && m_target.state == Transmissible.State.Empty && m_currentType != null)
         {
+            m_source.clip = m_target.type.infuseClip;
+            m_source.Play();
+
             m_target.BeginInfuse(m_currentType, (Transmissible t) =>
             {
                 // TODO: update visuals
