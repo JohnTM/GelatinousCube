@@ -9,11 +9,14 @@ public class Audible : MonoBehaviour
 
     public void SoundEvent(string name, Vector3 position)
     {
+        if (m_type == null) return;
         SoundEvent(m_type, name, position);
     }
 
     public static void SoundEvent(AudibleType type, string name, Vector3 position)
     {
+        if (type == null) return;
+
         foreach (var t in type.soundTypes)
         {
             if (t.name == name && t.clips.Length > 0)

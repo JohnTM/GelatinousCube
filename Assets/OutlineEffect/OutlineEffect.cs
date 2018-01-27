@@ -33,7 +33,7 @@ namespace cakeslice
     [RequireComponent(typeof(Camera))]
     [ExecuteInEditMode]
     public class OutlineEffect : MonoBehaviour
-    {/*
+    {
         private static OutlineEffect m_instance;
         public static OutlineEffect Instance
         {
@@ -87,9 +87,9 @@ namespace cakeslice
         Shader outlineBufferShader;
         [HideInInspector]
         public Material outlineShaderMaterial;
-        [HideInInspector]
+        //[HideInInspector]
         public RenderTexture renderTexture;
-        [HideInInspector]
+        //[HideInInspector]
         public RenderTexture extraRenderTexture;
 
         CommandBuffer commandBuffer;
@@ -403,6 +403,6 @@ namespace cakeslice
             if(outlines.Contains(outline))
                 outlines.Remove(outline);
         }
-        */
+        
     }
 }
