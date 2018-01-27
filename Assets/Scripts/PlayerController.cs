@@ -16,31 +16,73 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float m_maxVelocity = 5;
 
+    [SerializeField]
+    private float m_jumpSpeed = 10;
+
+    [SerializeField]
+    private float m_waterJumpSpeed = 5;
+
+    [SerializeField]
+    private LayerMask m_groundMask;
+
     private Rigidbody m_rigidbody;
 
     private CapsuleCollider m_collider;
 
+    private PlayerInput m_input;
+
     private float m_angle;
+
+    [SerializeField]
+    private bool m_grounded;
+
+    private GameObject m_ground;
 
     public float angle
     {
         get { return m_angle; }
     }
 
-
-
-
 	// Use this for initialization
 	void Start ()
     {
         m_rigidbody = GetComponent<Rigidbody>();
         m_collider = GetComponent<CapsuleCollider>();
+        m_input = GetComponent<PlayerInput>();
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate ()
     {
-        Vector2 localDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        RaycastHit hit;
+        if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height/2 - m_collider.radius + 0.01f, m_groundMask))
+        {
+            m_grounded = true;
+            m_ground = hit.collider.gameObject;
+        }
+        else
+        {
+            m_grounded = false;
+            m_ground = null;
+
+            // Check if we're floating in something
+            Collider[] colliders = Physics.OverlapSphere(m_rigidbody.position, m_collider.radius, m_groundMask);
+
+            foreach (var c in colliders)
+            {
+                Transmissible t = c.GetComponent<Transmissible>();
+                if (t && t.progress == 1 && t.type.bouyancy > 0)
+                {
+                    m_grounded = true;
+                    m_ground = t.gameObject;
+                }
+            }
+
+        }
+
+
+        Vector2 localDir = m_input.movement;
 
         // TODO: Check grounded state
 
@@ -71,10 +113,44 @@ public class PlayerController : MonoBehaviour
 
         velocity *= m_friction;
 
-        velocity.y = vy;
+        if (m_grounded && m_ground)
+        {
+            Transmissible t = m_ground.GetComponent<Transmissible>();
+            bool isFluid = false;
 
-        m_rigidbody.velocity = velocity;
+            if (t && t.progress == 1.0 && t.type.bouyancy > 0)
+            {
+                isFluid = true;
+            }
 
-        
+            if (isFluid)
+            {
+                if (m_input.wasJumpPressed)
+                {
+                    velocity.y = Mathf.Lerp(velocity.y, m_waterJumpSpeed, 0.25f);
+                }
+                else
+                {
+                    velocity.y = vy;
+                }
+            }
+            else
+            {
+                velocity.y = 0;
+
+                if (m_input.wasJumpPressed)
+                {
+                    m_grounded = false;
+                    // TODO: check water
+                    velocity.y = m_jumpSpeed;
+                }
+            }
+        }
+        else
+        {
+            velocity.y = vy;
+        }        
+
+        m_rigidbody.velocity = velocity;        
 	}
 }

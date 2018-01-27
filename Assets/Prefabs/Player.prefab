@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066305942658816}
   - component: {fileID: 120472974165390716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LineRenderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   - component: {fileID: 4619866658741634}
   - component: {fileID: 33190972497615022}
   - component: {fileID: 23513786449018672}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,8 @@ GameObject:
   - component: {fileID: 114044733195823308}
   - component: {fileID: 114712138303567924}
   - component: {fileID: 114409312614710726}
-  m_Layer: 0
+  - component: {fileID: 114047762128559404}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +79,7 @@ GameObject:
   - component: {fileID: 136174478406882584}
   - component: {fileID: 23690952192068940}
   - component: {fileID: 114660877036343054}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +94,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4120461001982058}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GunEmitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +164,7 @@ Transform:
   m_GameObject: {fileID: 1044319064130796}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -0, z: 0.484}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.59760857, y: 0.59760857, z: 0.59760857}
   m_Children:
   - {fileID: 4120461001982058}
   m_Father: {fileID: 4343369558461044}
@@ -214,7 +215,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -316,6 +317,23 @@ MonoBehaviour:
   m_drag: 0.1
   m_friction: 0.8
   m_maxVelocity: 3
+  m_jumpSpeed: 5
+  m_waterJumpSpeed: 20
+  m_groundMask:
+    serializedVersion: 2
+    m_Bits: 4294966783
+  m_grounded: 1
+--- !u!114 &114047762128559404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1048755559108460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e70f24019ccbda41a95d500e290505b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114409312614710726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_emitter: {fileID: 4120461001982058}
+  m_gunModel: {fileID: 4619866658741634}
   m_detectionMask:
     serializedVersion: 2
     m_Bits: 256
@@ -361,13 +380,14 @@ MonoBehaviour:
   m_detectionSpread: 30
   m_rays: 10
   m_tank: {fileID: 114660877036343054}
+  m_lineRenderer: {fileID: 120472974165390716}
 --- !u!120 &120472974165390716
 LineRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008393903847282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_MotionVectors: 0
@@ -394,8 +414,26 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Positions:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
+  - {x: -4.818776, y: 0.92859656, z: 2.4264867}
+  - {x: -4.835649, y: 0.86389, z: 2.404728}
+  - {x: -4.8622794, y: 0.8051366, z: 2.3703868}
+  - {x: -4.8974476, y: 0.75159186, z: 2.3250346}
+  - {x: -4.939933, y: 0.70251185, z: 2.270245}
+  - {x: -4.9885173, y: 0.6571523, z: 2.2075913}
+  - {x: -5.0419803, y: 0.6147693, z: 2.1386456}
+  - {x: -5.099103, y: 0.57461876, z: 2.064982}
+  - {x: -5.158664, y: 0.5359563, z: 1.9881718}
+  - {x: -5.219446, y: 0.498038, z: 1.9097888}
+  - {x: -5.2802277, y: 0.46011966, z: 1.8314061}
+  - {x: -5.3397894, y: 0.42145723, z: 1.754596}
+  - {x: -5.3969116, y: 0.3813066, z: 1.6809318}
+  - {x: -5.450375, y: 0.33892357, z: 1.6119864}
+  - {x: -5.4989595, y: 0.2935641, z: 1.5493324}
+  - {x: -5.5414457, y: 0.24448407, z: 1.4945431}
+  - {x: -5.576613, y: 0.19093934, z: 1.449191}
+  - {x: -5.603243, y: 0.13218589, z: 1.4148494}
+  - {x: -5.6201153, y: 0.067479454, z: 1.393091}
+  - {x: -5.626011, y: -0.003924012, z: 1.3854886}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 1
@@ -404,17 +442,131 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 1
+        value: 0.29521713
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.05
+        value: 0.32894424
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.1
+        value: 0.34711733
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.15
+        value: 0.34850606
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.2
+        value: 0.3330158
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.25
+        value: 0.30169526
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.3
+        value: 0.25667888
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.35
+        value: 0.20101431
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.4
+        value: 0.13849509
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.45
+        value: 0.12663862
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.5
+        value: 0.18997021
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.55
+        value: 0.24718371
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.6
+        value: 0.29440567
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.65
+        value: 0.328418
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.7
+        value: 0.34691796
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.75
+        value: 0.34864485
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.8
+        value: 0.33348176
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.85
+        value: 0.30246204
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.9
+        value: 0.25768572
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.95
+        value: 0.20220429
         inSlope: 0
         outSlope: 0
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
-      m_RotationOrder: 0
+      m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.2, g: 0.69803923, b: 1, a: 0.7019608}
+      key1: {r: 0.2, g: 0.69803923, b: 1, a: 0.7019608}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -441,7 +593,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 2
     alignment: 0
     textureMode: 0
     generateLightingData: 0
@@ -454,7 +606,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1129724096322136}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
