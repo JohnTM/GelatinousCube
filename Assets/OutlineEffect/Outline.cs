@@ -31,7 +31,7 @@ namespace cakeslice
     [ExecuteInEditMode]
     [RequireComponent(typeof(Renderer))]
     public class Outline : MonoBehaviour
-    {
+    {/*
         public Renderer Renderer { get; private set; }
 
         public int color;
@@ -69,6 +69,7 @@ namespace cakeslice
             {
                 effect.RemoveOutline(this);
             }
-        }
+        }*/
     }
+    
 }

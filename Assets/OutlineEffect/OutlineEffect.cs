@@ -33,7 +33,7 @@ namespace cakeslice
     [RequireComponent(typeof(Camera))]
     [ExecuteInEditMode]
     public class OutlineEffect : MonoBehaviour
-    {
+    {/*
         private static OutlineEffect m_instance;
         public static OutlineEffect Instance
         {
@@ -403,5 +403,6 @@ namespace cakeslice
             if(outlines.Contains(outline))
                 outlines.Remove(outline);
         }
+        */
     }
 }
