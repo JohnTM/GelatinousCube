@@ -76,10 +76,10 @@ public class Gun : MonoBehaviour
                 {
                     hitPoint = hit.point;
 
-                    if (minTarget == null || rayAngle < minAngle)
+                    if (minTarget == null || Mathf.Abs(rayAngle) < minAngle)
                     {
                         minTarget = t;
-                        minAngle = rayAngle;
+                        minAngle = Mathf.Abs(rayAngle);
                         hitColor = Color.yellow;
                         m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
                         m_targetHitNormal = hit.normal;
@@ -92,6 +92,8 @@ public class Gun : MonoBehaviour
 
         if (minTarget == null)
         {
+            minAngle = 0;
+
             for (int i = 0; i < m_rays; i++)
             {
                 float rayAngle = -m_detectionSpread + (m_detectionSpread * 2.0f) * (i / (float)m_rays);
@@ -107,10 +109,10 @@ public class Gun : MonoBehaviour
                     {
                         hitPoint = hit.point;
 
-                        if (minTarget == null || rayAngle < minAngle)
+                        if (minTarget == null || Mathf.Abs(rayAngle) < minAngle)
                         {
                             minTarget = t;
-                            minAngle = rayAngle;
+                            minAngle = Mathf.Abs(rayAngle);
                             hitColor = Color.yellow;
                             m_targetHitPoint = minTarget.transform.InverseTransformPoint(hit.point);
                             m_targetHitNormal = hit.normal;
