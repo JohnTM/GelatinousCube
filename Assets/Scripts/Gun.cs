@@ -197,7 +197,7 @@ public class Gun : MonoBehaviour
         {
             if (m_target.state == Transmissible.State.Full)
             {
-                m_source.clip = m_target.type.drainClip;
+                //m_source.clip = m_target.type.drainClip;
                 m_source.Play();
 
                 TransmissibleType type = m_target.BeginDrain((Transmissible t) =>
@@ -215,7 +215,7 @@ public class Gun : MonoBehaviour
         }
         else if (m_input.isInfusePressed && m_target && m_target.state == Transmissible.State.Empty && m_currentType != null)
         {
-            m_source.clip = m_target.type.infuseClip;
+            //m_source.clip = m_target.type.infuseClip;
             m_source.Play();
 
             m_target.BeginInfuse(m_currentType, (Transmissible t) =>
