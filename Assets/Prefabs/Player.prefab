@@ -3136,7 +3136,7 @@ MonoBehaviour:
   m_friction: 0.8
   m_maxVelocity: 3
   m_jumpSpeed: 5
-  m_waterJumpSpeed: 20
+  m_waterJumpSpeed: 12
   m_groundMask:
     serializedVersion: 2
     m_Bits: 4294966783
@@ -3269,10 +3269,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbf3575480402db40813e763382412fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: 1
-  eraseRenderer: 0
-  originalLayer: 0
-  originalMaterials: []
 --- !u!120 &120472974165390716
 LineRenderer:
   m_ObjectHideFlags: 1
