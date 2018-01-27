@@ -13,13 +13,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundTypes:
   - name: Footstep
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 77233f1bc6d665b4f9fb5ddd936f82c0, type: 3}
+    - {fileID: 8300000, guid: a28dcaf52fe7e754b8827ac5b12b41f8, type: 3}
+    - {fileID: 8300000, guid: d06110a7f5cbc7d409f271b0c6744135, type: 3}
+    - {fileID: 8300000, guid: 4836a5ab7a5100740aa926bb6e655855, type: 3}
+    - {fileID: 8300000, guid: b933f6f94159caf44a4dd43318b46b4a, type: 3}
     minPitch: 1
     maxPitch: 1
     minVolume: 0.8
     maxVolume: 1.2
   - name: Land
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: a63dfff3440e6764e9c969f9213cee28, type: 3}
+    - {fileID: 8300000, guid: 3047c93cdaf970444a8fb21b2a00a938, type: 3}
     minPitch: 1
     maxPitch: 1
     minVolume: 0.8
