@@ -9,11 +9,12 @@ public class BugzapperScript : MonoBehaviour {
     public AudioSource bugsAudio;
     public GameObject zapEffects;
     public float zapTime = 2f;
+    bool alreadyUsed = false;
 
     public void ZapperCharged()
     {
         Transmissible thisTransmissable = GetComponent<Transmissible>();
-        if (thisTransmissable.type.name == "Energy")
+        if (thisTransmissable.type.name == "Energy" && !alreadyUsed)
         {
             Debug.Log("Charged with energy!");
             StartCoroutine(ZapperActive());
@@ -38,6 +39,7 @@ public class BugzapperScript : MonoBehaviour {
         }
         zapEffects.SetActive(false);
         swarmEffect.SetActive(false);
+        alreadyUsed = true;
         yield return null;
     }
 }
