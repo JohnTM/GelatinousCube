@@ -8,6 +8,10 @@ public class Gun : MonoBehaviour
     private Transform m_emitter;
 
     [SerializeField]
+    private ParticleSystem m_beamSplashParticles;
+
+
+    [SerializeField]
     private Transform m_gunModel;
 
     [SerializeField]
@@ -295,6 +299,12 @@ public class Gun : MonoBehaviour
             m_lineRenderer.material.color = m_tank.type.beamColor;
             //m_lineRenderer.startColor = m_tank.type.beamColor;
             //m_lineRenderer.endColor = m_tank.type.beamColor;
+
+            if (m_beamSplashParticles.isStopped) m_beamSplashParticles.Play();
+            m_beamSplashParticles.transform.position = p3;
+            m_beamSplashParticles.transform.rotation = Quaternion.FromToRotation(Vector3.forward, m_targetHitNormal);
+            m_beamSplashParticles.GetComponent<ParticleSystemRenderer>().material = m_tank.type.material;
+            m_beamSplashParticles.GetComponent<ParticleSystemRenderer>().material.SetFloat("_Progress", 1.0f);
         }
         else
         {
@@ -303,6 +313,7 @@ public class Gun : MonoBehaviour
             m_gunHolsteredModel.gameObject.SetActive(true);
             m_animator.SetBool("Sucking", false);
             m_animator.SetLayerWeight(1, 0.0f);
+            if (!m_beamSplashParticles.isStopped) m_beamSplashParticles.Stop();
         }
     }
 

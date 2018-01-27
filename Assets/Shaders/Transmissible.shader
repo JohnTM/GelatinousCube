@@ -69,9 +69,20 @@ Shader "Custom/Transmissible" {
 
 			float3 offset = IN.worldPos * 0.5 + float3(_Time.x * 20.0, 0.0, _Time.x * 20.0);
 
-			float n = snoise(IN.worldPos + offset) * _Progress;
+			float n = snoise(IN.worldPos + offset);
 
-			dist += n * 0.1;
+			dist += n * 0.1 * _Progress;
+
+			float distFromCenter = length(center - IN.worldPos);
+
+			if (_Highlight > 0.0)
+			{
+				//o.Albedo = 1.0 - saturate(float3(distFromCenter, distFromCenter, distFromCenter) * 0.5);
+				//o.Emission = float3(0.0, 0.0, 0.0);
+				//o.Normal = float3(0.0, 0.0, 1.0);
+				//o.Alpha = 1;
+				//return;
+			}
 
 			if (dist > 0.0)
 			{
@@ -93,6 +104,9 @@ Shader "Custom/Transmissible" {
 				half rim = 1.0 - saturate(dot(normalize(IN.viewDir), o.Normal) * 1.1);
 				o.Emission = float3(rim, rim, rim);
 			}
+
+
+
 
 			//o.Albedo = fixed3(dist, 0.0, 0.0);
 		}
