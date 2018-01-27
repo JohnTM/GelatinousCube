@@ -173,6 +173,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 m_animator.SetFloat("Speed", 0.0f);
+                m_animator.SetFloat("Speed2", 0.1f);
             }
             else
             {
@@ -187,6 +188,7 @@ public class PlayerController : MonoBehaviour
                 }
 
                 m_animator.SetFloat("Speed", velocity.magnitude / m_maxVelocity);
+                m_animator.SetFloat("Speed2", 0.1f + (velocity.magnitude / m_maxVelocity) * 1.5f);
             }
         }
         else
@@ -194,6 +196,7 @@ public class PlayerController : MonoBehaviour
             velocity.y = vy;
 
             m_animator.SetFloat("Speed", 0.5f);
+            m_animator.SetFloat("Speed2", 0.1f);
         }
 
         m_animator.SetFloat("YSpeed", velocity.y);
