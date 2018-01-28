@@ -185,7 +185,7 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     Transmissible t = hit.collider.GetComponent<Transmissible>();
-                    if (t && t.progress == 0)
+                    if (t && (t.progress == 0 || (t.type.bouyancy == 0 && t.type.hasCollisions == false)))
                     {
                         abyss = true;
                     }
