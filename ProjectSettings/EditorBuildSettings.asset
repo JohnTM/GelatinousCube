@@ -14,3 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutLevel.unity
     guid: 669ccfa604d9e2f448c14f98b79b9929
+  - enabled: 1
+    path: Assets/Scenes/Adam002.unity
+    guid: e98161093d9eae043acd81b4158b9a11
