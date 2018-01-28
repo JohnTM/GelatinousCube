@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
             if (m_fallPreventionEnabled)
             {
                 RaycastHit hit;
-                if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.Ignore))
+                if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.UseGlobal))
                 {
                     Debug.DrawLine(m_rigidbody.position + force * m_collider.radius * 2, m_rigidbody.position + force * m_collider.radius * 2 + Vector3.down * 100);
                     abyss = true;
@@ -283,8 +283,8 @@ public class PlayerController : MonoBehaviour
         }
 
         m_animator.SetFloat("YSpeed", velocity.y);
-        m_animator.SetBool("Grounded", m_grounded && !inFluid); 
-
+        m_animator.SetBool("Grounded", m_grounded && !inFluid);
+        m_animator.SetBool("InFluid", inFluid);
         m_rigidbody.velocity = velocity;        
 	}
 }
