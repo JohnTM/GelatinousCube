@@ -6,10 +6,28 @@ ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: pCube1
+    100004: pPlane1
+    100006: pCube2
+    100008: transform1
+    100010: transform2
     400000: //RootNode
+    400002: pCube1
+    400004: pPlane1
+    400006: pCube2
+    400008: transform1
+    400010: transform2
     2300000: //RootNode
+    2300002: pCube1
+    2300004: pPlane1
+    2300006: pCube2
     3300000: //RootNode
+    3300002: pCube1
+    3300004: pPlane1
+    3300006: pCube2
     4300000: pCube1
+    4300002: pPlane1
+    4300004: pCube2
     9500000: //RootNode
   materials:
     importMaterials: 1
