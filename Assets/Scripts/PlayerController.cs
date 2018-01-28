@@ -176,18 +176,25 @@ public class PlayerController : MonoBehaviour
             bool abyss = false;
             if (m_fallPreventionEnabled)
             {
-                RaycastHit hit;
-                if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.Ignore))
+                RaycastHit[] hits = Physics.SphereCastAll(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, 100, m_groundMask);
+
+                abyss = true;
+                foreach (RaycastHit hit in hits)
                 {
-                    Debug.DrawLine(m_rigidbody.position + force * m_collider.radius * 2, m_rigidbody.position + force * m_collider.radius * 2 + Vector3.down * 100);
-                    abyss = true;
-                }
-                else
-                {
+                    // Solid object or bouyand object
                     Transmissible t = hit.collider.GetComponent<Transmissible>();
-                    if (t && (t.progress == 0 || (t.type.bouyancy == 0 && t.type.hasCollisions == false)))
+                    if (t)
                     {
-                        abyss = true;
+                        if ((t.type.hasCollisions == true || (t.type.bouyancy > 0 && t.progress == 1)))
+                        {
+                            abyss = false;
+                            break;
+                        }                                                
+                    }
+                    else if (hit.collider.isTrigger == false)
+                    {
+                        abyss = false;
+                        break;
                     }
                 }
             }

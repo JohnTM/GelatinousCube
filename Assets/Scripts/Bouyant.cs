@@ -9,6 +9,8 @@ public class Bouyant : MonoBehaviour
 
     private Rigidbody m_rigidbody;
 
+    private Collider[] m_colliders = new Collider[10];
+
 	// Use this for initialization
 	void Start ()
     {
@@ -22,11 +24,18 @@ public class Bouyant : MonoBehaviour
 
     public void ApplyFloatyForce(Rigidbody source)
     {
-        if (source.GetComponent<Collider>().bounds.Contains(transform.position))
+        int count = Physics.OverlapSphereNonAlloc(transform.position, 0.01f, m_colliders);
+
+        for (int i = 0; i < count; i++)
         {
-            Vector3 velocity = m_rigidbody.velocity;
-            velocity.y = Mathf.Lerp(velocity.y, m_floatySpeed, 0.1f);
-            m_rigidbody.velocity = velocity;
+            if (m_colliders[i].attachedRigidbody == m_rigidbody)
+            {
+                Vector3 velocity = m_rigidbody.velocity;
+                velocity.y = Mathf.Lerp(velocity.y, m_floatySpeed, 0.1f);
+                m_rigidbody.velocity = velocity;
+                break;
+            }
+                
         }
     }
 }
