@@ -52,6 +52,12 @@ public class PlayerController : MonoBehaviour
 
     private float m_stunTimer;
 
+    public bool isHurt
+    {
+        get { return m_stunTimer > 0; }
+    }
+
+
     public bool inFluid
     {
         get
@@ -89,6 +95,10 @@ public class PlayerController : MonoBehaviour
     {
         m_stunTimer = duration;
         m_rigidbody.AddForce(impulse, ForceMode.Impulse);
+        m_animator.SetTrigger("Hurt");
+
+        GetComponentInChildren<ParticleSystem>().Stop();
+        GetComponentInChildren<ParticleSystem>().Play();
     }
 
 	// Update is called once per frame
