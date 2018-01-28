@@ -3170,9 +3170,10 @@ MonoBehaviour:
   m_waterJumpSpeed: 12
   m_groundMask:
     serializedVersion: 2
-    m_Bits: 4294966783
+    m_Bits: 4294965759
   m_fallPreventionEnabled: 1
   m_grounded: 1
+  distanceFromRimDebug: 0
 --- !u!114 &114047762128559404
 MonoBehaviour:
   m_ObjectHideFlags: 1
