@@ -64,6 +64,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _Emission: 0
+    - _FilledFoam: 3
+    - _Foam: 3
     - _GlossMapScale: 1
     - _Glossiness: 0.76
     - _GlossyReflections: 1
@@ -83,4 +85,6 @@ Material:
     - _Center: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 0.6592777, g: 0.86181545, b: 0.98529404, a: 0.522}
     - _EmissionColor: {r: 0.077854685, g: 0.47335646, b: 0.5294118, a: 1}
+    - _FilledTint: {r: 1, g: 1, b: 1, a: 0.5}
     - _InertColor: {r: 0.70466554, g: 0.2352941, b: 1, a: 0.072}
+    - _Tint: {r: 1, g: 1, b: 1, a: 1}

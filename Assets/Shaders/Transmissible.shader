@@ -16,6 +16,10 @@ Shader "Custom/Transmissible" {
 		_Height("Height", Float) = 1.0
 		_Center("Center", Vector) = (0,0,0)
 		_Highlight("Highlight", Float) = 0.0
+		_Foam("Foamline Thickness", Range(0,3)) = 0.2
+		_FilledFoam("Filled Foamline Thickness", Range(0,3)) = 0.2
+		_Tint("Tint", Color) = (1, 1, 1, .5)
+		_FilledTint("Filled Tint", Color) = (1, 1, 1, .5)
 	}
 	SubShader {
 		Tags{ "Queue" = "Transparent" "RenderType" = "Transparent" }
@@ -27,11 +31,12 @@ Shader "Custom/Transmissible" {
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
-		#pragma surface surf Standard fullforwardshadows alpha
+		#pragma surface surf Standard  vertex:vert fullforwardshadows alpha
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
 
+		uniform sampler2D_float _CameraDepthTexture; //Depth Texture
 		sampler2D _MainTex;
 		sampler2D _NormalMap;
 
@@ -39,6 +44,8 @@ Shader "Custom/Transmissible" {
 			float2 uv_MainTex;
 			float3 worldPos;
 			float3 viewDir;
+			float4 screenPos;
+			float eyeDepth;
 		};
 
 		half _Glossiness;
@@ -51,6 +58,8 @@ Shader "Custom/Transmissible" {
 		fixed4 _EmissionColor;
 		float _Emission;
 		float _Highlight;
+		float4 _Tint, _FilledTint;
+		float _Foam, _FilledFoam;
 
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
@@ -61,8 +70,15 @@ Shader "Custom/Transmissible" {
 
 		float snoise(float3 v);
 
+		void vert(inout appdata_full v, out Input o)
+		{
+			UNITY_INITIALIZE_OUTPUT(Input, o);
+			COMPUTE_EYEDEPTH(o.eyeDepth);
+		}
+
 		void surf (Input IN, inout SurfaceOutputStandard o) 
 		{
+
 			fixed4 center = mul(unity_ObjectToWorld, fixed4(0.0, 0.0, 0.0, 1.0));
 
 			float dist = (center.y - IN.worldPos.y) / _Height + (_Progress - 0.5);
@@ -86,9 +102,12 @@ Shader "Custom/Transmissible" {
 
 			if (dist > 0.0)
 			{
+				half depth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(IN.screenPos)));
+				half4 foamLine = 1 - saturate(_FilledFoam * (depth - IN.eyeDepth));// foam line by comparing depth and screenposition
+
 				// Albedo comes from a texture tinted by color
 				fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-				o.Albedo = c.rgb;
+				o.Albedo = c.rgb + foamLine * _FilledTint.rgb;
 				// Metallic and smoothness come from slider variables
 				o.Metallic = _Metallic;
 				o.Smoothness = _Glossiness;
@@ -97,12 +116,16 @@ Shader "Custom/Transmissible" {
 				o.Emission = _EmissionColor.rgb * _Emission;
 			}
 			else
-			{				
+			{	
+				half depth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(IN.screenPos)));
+				half4 foamLine = 1 - saturate(_Foam * (depth - IN.eyeDepth));// foam line by comparing depth and screenposition
+
+
 				o.Albedo = _InertColor.rgb;
 				o.Alpha = _InertColor.a;
 				o.Normal = float3(0.0, 0.0, 1.0);
 				half rim = 1.0 - saturate(dot(normalize(IN.viewDir), o.Normal) * 1.1);
-				o.Emission = float3(rim, rim, rim);
+				o.Emission = (foamLine * _Tint).rgb * 1.0;
 			}
 
 

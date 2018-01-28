@@ -7673,8 +7673,8 @@ MonoBehaviour:
   sourceCamera: {fileID: 180013088}
   outlineCamera: {fileID: 1887339157}
   outlineShaderMaterial: {fileID: 0}
-  renderTexture: {fileID: 1309521105}
-  extraRenderTexture: {fileID: 385627709}
+  renderTexture: {fileID: 493928696}
+  extraRenderTexture: {fileID: 1543649677}
 --- !u!114 &180013091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11988,33 +11988,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ec27afb4a2fb67f4596eb5596cc27698, type: 2}
   m_IsPrefabParent: 0
---- !u!84 &385627709
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1007
-  m_Height: 623
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &387318236
 Prefab:
   m_ObjectHideFlags: 0
@@ -13718,6 +13691,33 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 493401659}
   m_Script: {fileID: 11500000, guid: e385a95a1df92df44bd996bdd21d1a36, type: 3}
+--- !u!84 &493928696
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1007
+  m_Height: 461
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &494016498
 Prefab:
   m_ObjectHideFlags: 0
@@ -14195,7 +14195,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  m_type: {fileID: 11400000, guid: 11a323e75772a8247a0e7e06081791d1, type: 2}
+  m_type: {fileID: 11400000, guid: 96708cb9a5701e943993be31bbf241e0, type: 2}
   m_progress: 0
 --- !u!23 &512015543
 MeshRenderer:
@@ -32891,33 +32891,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_type: {fileID: 11400000, guid: a38bde1213c72a34c9fd3a2f45b927c8, type: 2}
---- !u!84 &1309521105
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_Width: 1007
-  m_Height: 623
-  m_AntiAliasing: 1
-  m_DepthFormat: 1
-  m_ColorFormat: 0
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 0
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1001 &1313500646
 Prefab:
   m_ObjectHideFlags: 0
@@ -37607,6 +37580,33 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 1192d5f4dfdca9a42ab88c29c410c036, type: 3}
   m_PrefabInternal: {fileID: 1541234040}
+--- !u!84 &1543649677
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_Width: 1007
+  m_Height: 461
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1001 &1547388255
 Prefab:
   m_ObjectHideFlags: 0
@@ -48277,7 +48277,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 0
   m_RenderingPath: 1
-  m_TargetTexture: {fileID: 1309521105}
+  m_TargetTexture: {fileID: 493928696}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
