@@ -7,7 +7,7 @@ public class TransmissibleEvent : UnityEvent<Transmissible>
 { }
 
 
-[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Collider)), RequireComponent(typeof(Highlightable))]
+[RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Highlightable))]
 public class Transmissible : MonoBehaviour
 {
     public delegate void OnTransmissibleComplete(Transmissible t);
