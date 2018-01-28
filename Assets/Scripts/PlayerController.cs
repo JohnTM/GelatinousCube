@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         get { return m_stunTimer > 0; }
     }
 
+    public float distanceFromRimDebug;
 
     public bool inFluid
     {
@@ -138,9 +139,16 @@ public class PlayerController : MonoBehaviour
             {
                 if (hit.normal.y > 0.5f)
                 {
-                    m_grounded = true;
-                    m_ground = hit.collider.gameObject;
-                    m_groundNormal = hit.normal;
+                    float distanceFromRim = Mathf.Abs((m_rigidbody.position.y - m_collider.height/2) - hit.point.y);
+
+                    distanceFromRimDebug = distanceFromRim;
+
+                    if (distanceFromRim < 0.25f)
+                    {
+                        m_grounded = true;
+                        m_ground = hit.collider.gameObject;
+                        m_groundNormal = hit.normal;
+                    }
                     break;
                 }
             }
