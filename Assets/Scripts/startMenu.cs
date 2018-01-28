@@ -12,7 +12,19 @@ public class startMenu : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (InputManager.ActiveDevice != null && InputManager.ActiveDevice.Action1.WasPressed && !alreadyPressed)
+        bool startPressed = InputManager.ActiveDevice != null && InputManager.ActiveDevice.Action1.WasPressed;
+        
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Return))
+        {
+            startPressed = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
+        if (startPressed && !alreadyPressed)
         {
             alreadyPressed = true;
             Invoke("StartGame", 1.0f);

@@ -14,4 +14,12 @@ public class ResetScene : MonoBehaviour
             startAndEndEffects.EndLevel();
         }
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+    }
 }
