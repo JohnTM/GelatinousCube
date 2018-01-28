@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviour
             if (m_fallPreventionEnabled)
             {
                 RaycastHit hit;
-                if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.UseGlobal))
+                if (!Physics.SphereCast(m_rigidbody.position + force * m_collider.radius * 2, m_collider.radius, Vector3.down, out hit, 100, m_groundMask, QueryTriggerInteraction.Ignore))
                 {
                     Debug.DrawLine(m_rigidbody.position + force * m_collider.radius * 2, m_rigidbody.position + force * m_collider.radius * 2 + Vector3.down * 100);
                     abyss = true;
