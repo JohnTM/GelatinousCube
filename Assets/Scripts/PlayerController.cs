@@ -52,6 +52,13 @@ public class PlayerController : MonoBehaviour
 
     private float m_stunTimer;
 
+    public bool isHurt
+    {
+        get { return m_stunTimer > 0; }
+    }
+
+    public float distanceFromRimDebug;
+
     public bool inFluid
     {
         get
@@ -89,6 +96,10 @@ public class PlayerController : MonoBehaviour
     {
         m_stunTimer = duration;
         m_rigidbody.AddForce(impulse, ForceMode.Impulse);
+        m_animator.SetTrigger("Hurt");
+
+        GetComponentInChildren<ParticleSystem>().Stop();
+        GetComponentInChildren<ParticleSystem>().Play();
     }
 
 	// Update is called once per frame
@@ -115,14 +126,30 @@ public class PlayerController : MonoBehaviour
 
         if (m_grounded == false)
         {
-            RaycastHit hit;
-            if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height / 2 - m_collider.radius + 0.01f, m_groundMask, QueryTriggerInteraction.Ignore))
+
+
+            RaycastHit[] hits = Physics.SphereCastAll(m_rigidbody.position, 
+                                                      m_collider.radius, 
+                                                      Vector3.down, 
+                                                      m_collider.height / 2 - m_collider.radius + 0.01f, 
+                                                      m_groundMask, 
+                                                      QueryTriggerInteraction.Ignore);
+
+            foreach (RaycastHit hit in hits)
             {
                 if (hit.normal.y > 0.5f)
                 {
-                    m_grounded = true;
-                    m_ground = hit.collider.gameObject;
-                    m_groundNormal = hit.normal;
+                    float distanceFromRim = Mathf.Abs((m_rigidbody.position.y - m_collider.height/2) - hit.point.y);
+
+                    distanceFromRimDebug = distanceFromRim;
+
+                    if (distanceFromRim < 0.25f)
+                    {
+                        m_grounded = true;
+                        m_ground = hit.collider.gameObject;
+                        m_groundNormal = hit.normal;
+                    }
+                    break;
                 }
             }
         }

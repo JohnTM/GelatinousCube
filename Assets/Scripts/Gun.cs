@@ -312,7 +312,7 @@ public class Gun : MonoBehaviour
             m_gunModel.gameObject.SetActive(false);
             m_gunHolsteredModel.gameObject.SetActive(true);
             m_animator.SetBool("Sucking", false);
-            m_animator.SetLayerWeight(1, 0.0f);
+            m_animator.SetLayerWeight(1, GetComponent<PlayerController>().isHurt ? 1 : 0);
             if (!m_beamSplashParticles.isStopped) m_beamSplashParticles.Stop();
         }
     }

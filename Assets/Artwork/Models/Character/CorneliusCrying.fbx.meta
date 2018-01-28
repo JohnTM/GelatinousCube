@@ -186,7 +186,7 @@ ModelImporter:
     400176: Spine1
     400178: Spine2
     4300000: Cornelius
-    7400000: Take 001
+    7400000: Crying
     9500000: //RootNode
     13700000: Cornelius
   materials:
@@ -205,14 +205,42 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Crying
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 130
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -243,8 +271,637 @@ ModelImporter:
   copyAvatar: 0
   humanDescription:
     serializedVersion: 2
-    human: []
-    skeleton: []
+    human:
+    - boneName: Scruffy_03:QuickRigCharacter_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_Spine1
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_Neck
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftShoulder
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightShoulder
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftForeArm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightForeArm
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftHand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightHand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_LeftToeBase
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_RightToeBase
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Scruffy_03:QuickRigCharacter_Spine2
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: CorneliusCrying(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Cornelius
+      parentName: CorneliusCrying(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      parentName: CorneliusCrying(Clone)
+      position: {x: -0.00000015258789, y: -0.0000000011920929, z: -0.35301048}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_ChestEndEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0, y: 1.3485827, z: 0.16129555}
+      rotation: {x: -1.0408341e-16, y: -2.5422275e-32, z: -1.110223e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_ChestOriginEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0, y: 0.8558284, z: 0.23119381}
+      rotation: {x: -1.179612e-16, y: -2.3881533e-32, z: -1.110223e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_HeadEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0, y: 1.6505319, z: 0.20967418}
+      rotation: {x: 2.5266077e-16, y: 7.332054e-32, z: -2.220446e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_Hips
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0, y: 0.7366687, z: 0.23069328}
+      rotation: {x: 3.0817192e-16, y: 1.6653345e-16, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftUpLeg
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Hips
+      position: {x: -0.15838054, y: 0.0017086791, z: -0.0004951477}
+      rotation: {x: -0.001990355, y: -0.13027914, z: -0.11268366, w: 0.9850512}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftLeg
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_LeftUpLeg
+      position: {x: -0, y: -0.3223321, z: 0}
+      rotation: {x: 0.10293589, y: 0.02161622, z: 0.002238226, w: 0.99445057}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftFoot
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_LeftLeg
+      position: {x: 1.7763568e-17, y: -0.34789166, z: 0}
+      rotation: {x: -0.076690674, y: 0.014444785, z: -0.012397459, w: 0.9968732}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftToeBase
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_LeftFoot
+      position: {x: -0.000000047683713, y: -0.08169719, z: 0.067990355}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246467e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightUpLeg
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Hips
+      position: {x: 0.15838054, y: 0.0017087555, z: -0.0004951477}
+      rotation: {x: -0.0019831306, y: 0.13021697, z: 0.11267637, w: 0.9850602}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightLeg
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_RightUpLeg
+      position: {x: 0.000000019073486, y: -0.32233217, z: 0.000003156662}
+      rotation: {x: 0.10293786, y: -0.02158652, z: -0.0022342678, w: 0.99445105}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightFoot
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_RightLeg
+      position: {x: -0.000000009536743, y: -0.34789166, z: 1.7763568e-17}
+      rotation: {x: -0.07669385, y: -0.014425522, z: 0.01237099, w: 0.99687356}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightToeBase
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_RightFoot
+      position: {x: 0.0000057029724, y: -0.08169719, z: 0.067990355}
+      rotation: {x: 2.2365468e-32, y: -0, z: -1.2246467e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_Spine
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Hips
+      position: {x: -0, y: 0.1191597, z: 0.0005005264}
+      rotation: {x: 2.0816682e-17, y: 9.555356e-17, z: 1.9599926e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_Spine1
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Spine
+      position: {x: -0, y: 0.118373714, z: -0.010820112}
+      rotation: {x: 6.938894e-18, y: 1.6078907e-16, z: 1.5160491e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_Spine2
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Spine1
+      position: {x: -0, y: 0.11837379, z: -0.010820112}
+      rotation: {x: -9.7144515e-17, y: 2.5760765e-16, z: 2.3470627e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftShoulder
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Spine2
+      position: {x: -0.09534363, y: 0.25600693, z: -0.048258036}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftArm
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_LeftShoulder
+      position: {x: -0.14301544, y: -2.842171e-16, z: -3.5527136e-17}
+      rotation: {x: 0.298706, y: 0.06555468, z: 0.48706716, w: 0.8180727}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftForeArm
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_LeftArm
+      position: {x: -0.54442215, y: 0, z: 0}
+      rotation: {x: -0.0000011827158, y: 0.27016586, z: 0.000005650257, w: 0.9628138}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftHand
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_LeftForeArm
+      position: {x: -0.2755603, y: 0, z: -3.5527136e-17}
+      rotation: {x: 0.00000016674457, y: -0.00000032304933, z: -0.000000091504084,
+        w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_Neck
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Spine2
+      position: {x: -0, y: 0.350641, z: -0.020879611}
+      rotation: {x: -3.0531133e-16, y: -2.7614263e-17, z: -2.797218e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_Head
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Neck
+      position: {x: -0, y: 0.20731506, z: 0.021000214}
+      rotation: {x: 3.0817192e-16, y: 1.6653345e-16, z: 5.551115e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightShoulder
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Spine2
+      position: {x: 0.09534363, y: 0.25600693, z: -0.048258036}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightArm
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_RightShoulder
+      position: {x: 0.14301544, y: 0, z: 0}
+      rotation: {x: 0.29864138, y: -0.06551033, z: -0.4870863, w: 0.8180884}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightForeArm
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_RightArm
+      position: {x: 0.54442215, y: -8.5265126e-16, z: 1.0658141e-16}
+      rotation: {x: 0.000000195283, y: -0.27016637, z: 0.0000008950788, w: 0.9628137}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightHand
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_RightForeArm
+      position: {x: 0.2755603, y: -0.00000015258789, z: 0}
+      rotation: {x: -0.00000045441513, y: 0.0000006013169, z: -0.00000014718356, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_HipsEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0, y: 0.7383774, z: 0.23019813}
+      rotation: {x: 2.5266077e-16, y: 7.332054e-32, z: -2.220446e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftAnkleEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0.2876178, y: 0.08999607, z: 0.14449796}
+      rotation: {x: 0.028748063, y: -0.09662717, z: -0.11609438, w: 0.98810875}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftElbowEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0.51979065, y: 0.89340425, z: 0.061272316}
+      rotation: {x: 0.15600874, y: 0.28412998, z: 0.54965985, w: 0.7699386}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftFootEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0.3193446, y: 0.008298789, z: 0.20463198}
+      rotation: {x: 0.028748058, y: -0.09662717, z: -0.11609438, w: 0.98810875}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftHipEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0.15838054, y: 0.7383774, z: 0.23019813}
+      rotation: {x: -0.001990355, y: -0.13027914, z: -0.11268366, w: 0.9850512}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftKneeEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0.23010486, y: 0.42423344, z: 0.22199829}
+      rotation: {x: 0.10156201, y: -0.11985779, z: -0.09648618, w: 0.98285794}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftShoulderEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0.23835906, y: 1.3485827, z: 0.16129555}
+      rotation: {x: 0.29870597, y: 0.06555466, z: 0.48706716, w: 0.8180727}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_LeftWristEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: -0.58435094, y: 0.6357382, z: 0.13457742}
+      rotation: {x: 0.15600903, y: 0.28412986, z: 0.54965967, w: 0.7699387}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightAnkleEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: 0.2876178, y: 0.08999622, z: 0.1444979}
+      rotation: {x: 0.02874654, y: 0.09661509, z: 0.116070695, w: 0.98811275}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightElbowEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: 0.5197765, y: 0.89339775, z: 0.061261825}
+      rotation: {x: 0.1559418, y: -0.2840946, z: -0.54965544, w: 0.7699684}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightFootEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: 0.3193447, y: 0.008298999, z: 0.20463203}
+      rotation: {x: 0.028746543, y: 0.09661508, z: 0.116070695, w: 0.98811275}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightHipEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: 0.15838054, y: 0.73837745, z: 0.23019813}
+      rotation: {x: -0.0019831306, y: 0.13021699, z: 0.11267637, w: 0.9850602}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightKneeEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: 0.23010118, y: 0.42423227, z: 0.2220015}
+      rotation: {x: 0.10156922, y: 0.1198246, z: 0.09648878, w: 0.982861}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightShoulderEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: 0.23835906, y: 1.3485827, z: 0.16129555}
+      rotation: {x: 0.29864138, y: -0.065510325, z: -0.4870863, w: 0.8180884}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Ctrl_RightWristEffector
+      parentName: Scruffy_03:QuickRigCharacter_Ctrl_Reference
+      position: {x: 0.5843507, y: 0.6357381, z: 0.13457717}
+      rotation: {x: 0.15594184, y: -0.28409386, z: -0.5496556, w: 0.7699686}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Guides
+      parentName: CorneliusCrying(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.00000015258789, y: 1.6505319, z: -0.1433363}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Hips
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.00000015258789, y: 0.7366686, z: -0.122317195}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftArm
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.23835921, y: 1.3485827, z: -0.19171493}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftFoot
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.28761798, y: 0.08999607, z: -0.20851251}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftForeArm
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.527083, y: 0.89672226, z: -0.2858221}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftHand
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.58435124, y: 0.63573843, z: -0.21843296}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftLeg
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.25253397, y: 0.43151274, z: -0.15226272}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftShoulder
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.095343776, y: 1.3485827, z: -0.19171493}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftToeBase
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.31934476, y: 0.008298882, z: -0.14837849}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LeftUpLeg
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.1583807, y: 0.7383774, z: -0.122812346}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Neck
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.00000015258789, y: 1.4432168, z: -0.1643365}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Reference
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.00000015258789, y: -0.0000000011920929, z: -0.35301048}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightArm
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.23835891, y: 1.3485827, z: -0.19171493}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightFoot
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.28761768, y: 0.08999607, z: -0.20851251}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightForeArm
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.5270827, y: 0.89672226, z: -0.2858221}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightHand
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.58435094, y: 0.63573843, z: -0.21843296}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightLeg
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.25253367, y: 0.43151274, z: -0.15226272}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightShoulder
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.09534347, y: 1.3485827, z: -0.19171493}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightToeBase
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.31934446, y: 0.008298882, z: -0.14837849}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: RightUpLeg
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: 0.15838039, y: 0.7383774, z: -0.122812346}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.00000015258789, y: 0.8558283, z: -0.12181667}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine1
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.00000015258789, y: 0.97420204, z: -0.13263679}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Spine2
+      parentName: Scruffy_03:QuickRigCharacter_Guides
+      position: {x: -0.00000015258789, y: 1.0925758, z: -0.14345689}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Reference
+      parentName: CorneliusCrying(Clone)
+      position: {x: -0.00000015258789, y: -0.0000000011920929, z: -0.35301048}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_Hips
+      parentName: Scruffy_03:QuickRigCharacter_Reference
+      position: {x: -0.00092002976, y: 0.73383224, z: 0.23351726}
+      rotation: {x: 0.5010491, y: -0.49894878, z: -0.50104904, w: 0.49894878}
+      scale: {x: 1.0000007, y: 1.0000007, z: 1.0000011}
+    - name: Scruffy_03:QuickRigCharacter_LeftUpLeg
+      parentName: Scruffy_03:QuickRigCharacter_Hips
+      position: {x: -0.0017065775, y: -0.00050232577, z: 0.15838064}
+      rotation: {x: 0.112409875, y: 0.13051558, z: -0.98504484, w: 0.0040591955}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000007}
+    - name: Scruffy_03:QuickRigCharacter_LeftLeg
+      parentName: Scruffy_03:QuickRigCharacter_LeftUpLeg
+      position: {x: -0.32233265, y: 0.000000115236716, z: -0.00000004622644}
+      rotation: {x: -0.02161637, y: 0.0022379514, z: 0.1029359, w: -0.9944506}
+      scale: {x: 1.0000005, y: 1.0000001, z: 1.0000006}
+    - name: Scruffy_03:QuickRigCharacter_LeftFoot
+      parentName: Scruffy_03:QuickRigCharacter_LeftLeg
+      position: {x: -0.34789166, y: 0.000000022886843, z: 0.0000002638816}
+      rotation: {x: -0.068830125, y: 0.0056880373, z: -0.4212724, w: -0.90430063}
+      scale: {x: 1.0000001, y: 1.0000013, z: 1.0000007}
+    - name: Scruffy_03:QuickRigCharacter_LeftToeBase
+      parentName: Scruffy_03:QuickRigCharacter_LeftFoot
+      position: {x: -0.10628803, y: 0.000000026246775, z: 0.000000017295934}
+      rotation: {x: -0.00000006705521, y: 0.00000008055938, z: 0.0000002233864, w: 1}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000006}
+    - name: Scruffy_03:QuickRigCharacter_RightUpLeg
+      parentName: Scruffy_03:QuickRigCharacter_Hips
+      position: {x: -0.0017066845, y: -0.0005023108, z: -0.15838064}
+      rotation: {x: -0.13045287, y: 0.11240345, z: 0.004056841, w: 0.9850539}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000002}
+    - name: Scruffy_03:QuickRigCharacter_RightLeg
+      parentName: Scruffy_03:QuickRigCharacter_RightUpLeg
+      position: {x: 0.3223323, y: -0.00000024261556, z: -0.00000003877109}
+      rotation: {x: 0.021586655, y: -0.0022346524, z: -0.102942556, w: 0.9944505}
+      scale: {x: 1.0000005, y: 1.0000007, z: 1.0000004}
+    - name: Scruffy_03:QuickRigCharacter_RightFoot
+      parentName: Scruffy_03:QuickRigCharacter_RightLeg
+      position: {x: 0.34789172, y: -0.00000011585909, z: -0.000000015939092}
+      rotation: {x: 0.068792716, y: -0.0056808544, z: 0.42127684, w: 0.90430146}
+      scale: {x: 1.0000002, y: 0.9999999, z: 1.0000005}
+    - name: Scruffy_03:QuickRigCharacter_RightToeBase
+      parentName: Scruffy_03:QuickRigCharacter_RightFoot
+      position: {x: 0.10628802, y: 0.000000013156224, z: 0.0000000062621175}
+      rotation: {x: -0, y: 4.6566123e-10, z: 0.0000000024010658, w: 1}
+      scale: {x: 1.0000002, y: 1, z: 1.0000004}
+    - name: Scruffy_03:QuickRigCharacter_Spine
+      parentName: Scruffy_03:QuickRigCharacter_Hips
+      position: {x: -0.119160786, y: -0.000000002257679, z: -0.0000000071949557}
+      rotation: {x: -0, y: -0.000000059604638, z: 0.047658764, w: 0.9988637}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: Scruffy_03:QuickRigCharacter_Spine1
+      parentName: Scruffy_03:QuickRigCharacter_Spine
+      position: {x: -0.118867226, y: -0.00000001810868, z: 0.000000005636521}
+      rotation: {x: -0, y: -0, z: 0.0000000037252894, w: 1}
+      scale: {x: 1.0000006, y: 1.0000005, z: 1.0000005}
+    - name: Scruffy_03:QuickRigCharacter_Spine2
+      parentName: Scruffy_03:QuickRigCharacter_Spine1
+      position: {x: -0.11886731, y: 0.0000000053553486, z: -5.8158e-10}
+      rotation: {x: -0.0000000576395, y: 0.00000006241511, z: -0.015837435, w: 0.9998746}
+      scale: {x: 0.9999995, y: 0.99999964, z: 0.99999976}
+    - name: Scruffy_03:QuickRigCharacter_LeftShoulder
+      parentName: Scruffy_03:QuickRigCharacter_Spine2
+      position: {x: -0.2584229, y: -0.03295524, z: 0.09534366}
+      rotation: {x: -0.48491195, y: 0.5146458, z: 0.48491198, w: 0.514646}
+      scale: {x: 1.0000005, y: 1.0000007, z: 1.0000007}
+    - name: Scruffy_03:QuickRigCharacter_LeftArm
+      parentName: Scruffy_03:QuickRigCharacter_LeftShoulder
+      position: {x: -0.14301561, y: 0.000000015922108, z: -0.000000017961352}
+      rotation: {x: 0.90659714, y: 0.014272, z: 0.010876802, w: 0.42161563}
+      scale: {x: 1, y: 1.0000011, z: 1.0000007}
+    - name: Scruffy_03:QuickRigCharacter_LeftForeArm
+      parentName: Scruffy_03:QuickRigCharacter_LeftArm
+      position: {x: -0.5444227, y: -0.0000072840116, z: 0.000003840144}
+      rotation: {x: -0.0040154452, y: -0.014306339, z: -0.020906301, w: 0.99967104}
+      scale: {x: 1.0000007, y: 0.9999997, z: 0.9999999}
+    - name: Scruffy_03:QuickRigCharacter_LeftHand
+      parentName: Scruffy_03:QuickRigCharacter_LeftForeArm
+      position: {x: -0.27556047, y: 0.0000000994314, z: 0.0000001888887}
+      rotation: {x: 0.00000007400501, y: 0.000000067195735, z: 5.526245e-12, w: 1}
+      scale: {x: 1.0000006, y: 1.0000001, z: 1}
+    - name: Scruffy_03:QuickRigCharacter_RightShoulder
+      parentName: Scruffy_03:QuickRigCharacter_Spine2
+      position: {x: -0.25842285, y: -0.032955218, z: -0.09534364}
+      rotation: {x: 0.5146459, y: 0.4849119, z: -0.51464593, w: 0.4849119}
+      scale: {x: 1.0000002, y: 1.0000005, z: 1.0000007}
+    - name: Scruffy_03:QuickRigCharacter_RightArm
+      parentName: Scruffy_03:QuickRigCharacter_RightShoulder
+      position: {x: 0.14301556, y: 0.000000067626125, z: -0.000000009612649}
+      rotation: {x: -0.9065636, y: -0.014265866, z: -0.010883049, w: -0.42168775}
+      scale: {x: 1.0000004, y: 1.0000005, z: 1.0000004}
+    - name: Scruffy_03:QuickRigCharacter_RightForeArm
+      parentName: Scruffy_03:QuickRigCharacter_RightArm
+      position: {x: 0.54442257, y: -0.0000000121142305, z: -0.00000043227718}
+      rotation: {x: -0.0040155044, y: -0.014310593, z: -0.020916192, w: 0.99967074}
+      scale: {x: 1.0000014, y: 1.0000005, z: 1.0000006}
+    - name: Scruffy_03:QuickRigCharacter_RightHand
+      parentName: Scruffy_03:QuickRigCharacter_RightForeArm
+      position: {x: 0.27556032, y: -0.00000016204254, z: -0.00000030587236}
+      rotation: {x: 0.000000049337082, y: 0.000000044797382, z: 0.00000047683687,
+        w: 1}
+      scale: {x: 1.0000005, y: 1.0000006, z: 1.0000001}
+    - name: Scruffy_03:QuickRigCharacter_Neck
+      parentName: Scruffy_03:QuickRigCharacter_Spine2
+      position: {x: -0.351262, y: 0.000000031067575, z: 0.000000015159651}
+      rotation: {x: 0.000000059534916, y: 0.0000000028822804, z: -0.08012815, w: 0.99678457}
+      scale: {x: 1.000001, y: 1.000001, z: 1.0000011}
+    - name: Scruffy_03:QuickRigCharacter_Head
+      parentName: Scruffy_03:QuickRigCharacter_Neck
+      position: {x: -0.20837806, y: 0.00000012042234, z: -0.000000036206615}
+      rotation: {x: -0.000000028326319, y: -0.000000031208597, z: 0.000000014901161,
+        w: 1}
+      scale: {x: 0.9999999, y: 0.99999964, z: 0.9999998}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -255,10 +912,10 @@ ModelImporter:
     rootMotionBoneName: 
     rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
