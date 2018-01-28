@@ -125,14 +125,23 @@ public class PlayerController : MonoBehaviour
 
         if (m_grounded == false)
         {
-            RaycastHit hit;
-            if (Physics.SphereCast(m_rigidbody.position, m_collider.radius, Vector3.down, out hit, m_collider.height / 2 - m_collider.radius + 0.01f, m_groundMask, QueryTriggerInteraction.Ignore))
+
+
+            RaycastHit[] hits = Physics.SphereCastAll(m_rigidbody.position, 
+                                                      m_collider.radius, 
+                                                      Vector3.down, 
+                                                      m_collider.height / 2 - m_collider.radius + 0.01f, 
+                                                      m_groundMask, 
+                                                      QueryTriggerInteraction.Ignore);
+
+            foreach (RaycastHit hit in hits)
             {
                 if (hit.normal.y > 0.5f)
                 {
                     m_grounded = true;
                     m_ground = hit.collider.gameObject;
                     m_groundNormal = hit.normal;
+                    break;
                 }
             }
         }
