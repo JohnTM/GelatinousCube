@@ -21,7 +21,10 @@ MonoBehaviour:
     minVolume: 0.8
     maxVolume: 1.2
   - name: Land
-    clips: []
+    clips:
+    - {fileID: 8300000, guid: 173bcb4019a850445b9afa7fc917b934, type: 3}
+    - {fileID: 8300000, guid: d7a738d3b54c1104689378f428afecb6, type: 3}
+    - {fileID: 8300000, guid: fa1a579e1b3851b44b070cb720321a01, type: 3}
     particles: {fileID: 198193550819710356, guid: 98231195f92a2ed4daed99f379054828,
       type: 2}
     alignParticlesWithNormal: 0
