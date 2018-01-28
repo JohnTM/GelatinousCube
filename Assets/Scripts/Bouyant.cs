@@ -28,7 +28,7 @@ public class Bouyant : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            if (m_colliders[i].attachedRigidbody == m_rigidbody)
+            if (m_colliders[i].attachedRigidbody == source)
             {
                 Vector3 velocity = m_rigidbody.velocity;
                 velocity.y = Mathf.Lerp(velocity.y, m_floatySpeed, 0.1f);
