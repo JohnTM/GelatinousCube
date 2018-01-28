@@ -209,5 +209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef880a5e4d62c54db6be6d85b12f070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introVid: {fileID: 32900000, guid: 9ca4722dfe6ebf047b358ad1a489d26d, type: 3}
-  nextLevelToLoad: IntroVideo2
+  introVid: {fileID: 32900000, guid: 8891e52afd115924ba65f1197f0d03e8, type: 3}
+  audioClip: {fileID: 8300000, guid: 396a5198092370f40aafdb30e0da455d, type: 3}
+  nextLevelToLoad: MainMenu
