@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using InControl;
 
 public class IntroVideoScript : MonoBehaviour {
 
@@ -27,7 +28,7 @@ public class IntroVideoScript : MonoBehaviour {
     {
         float currentFrame = videoPlayer.frame;
         float frameCount = videoPlayer.frameCount;
-        if (currentFrame == frameCount)
+        if (currentFrame == frameCount || (InputManager.ActiveDevice != null && InputManager.ActiveDevice.AnyButton.WasPressed) || (Input.GetKeyDown(KeyCode.Space)))
         {
             SceneManager.LoadScene(nextLevelToLoad);
         }
