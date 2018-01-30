@@ -21,6 +21,7 @@ MonoBehaviour:
   density: 0
   beamColor: {r: 0, g: 0.759, b: 0.884, a: 1}
   animateUVs: {x: 0.075, y: 0.05}
+  transmitPower: 1
   drainClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}
   infuseClip: {fileID: 8300000, guid: 237690677262cf14c99fa910a18ae010, type: 3}
   audibleType: {fileID: 11400000, guid: 28bedd125a193004c85f12ce21e7f537, type: 2}

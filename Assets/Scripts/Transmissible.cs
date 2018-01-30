@@ -8,7 +8,7 @@ public class TransmissibleEvent : UnityEvent<Transmissible>
 
 
 [RequireComponent(typeof(Rigidbody)), RequireComponent(typeof(Highlightable))]
-public class Transmissible : MonoBehaviour
+public class Transmissible : Powered
 {
     public delegate void OnTransmissibleComplete(Transmissible t);
 
@@ -65,8 +65,10 @@ public class Transmissible : MonoBehaviour
     private OnTransmissibleComplete m_callback;
 
     // Use this for initialization
-    void Start()
+    protected override void Start()
     {
+        base.Start();
+
         m_renderers = GetComponentsInChildren<Renderer>();
         m_colliders = GetComponentsInChildren<Collider>();
         m_rigidbody = GetComponent<Rigidbody>();
@@ -129,9 +131,11 @@ public class Transmissible : MonoBehaviour
         }
     }
 
-	// Update is called once per frame
-	void Update ()
+    // Update is called once per frame
+    protected override void Update ()
     {
+        base.Update();
+
         // Update appearance
 		foreach (var r in m_renderers)
         {
@@ -206,7 +210,21 @@ public class Transmissible : MonoBehaviour
                 //m_rigidbody.SetDensity(m_type.density);
             }
         }        
-              
+           
+        if (m_type.transmitPower && m_progress == 1)
+        {
+            m_providesPower = true;
+        }
+        else if (m_type.generatePower && m_progress == 1)
+        {
+            m_providesPower = true;
+            m_internalPowerLevel = 1;
+        }
+        else
+        {
+            m_providesPower = false;
+            m_internalPowerLevel = 0;
+        }
 	}
 
     void OnTriggerStay(Collider c)

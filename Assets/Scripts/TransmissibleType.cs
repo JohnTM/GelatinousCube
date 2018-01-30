@@ -25,6 +25,8 @@ public class TransmissibleType : ScriptableObject
     public float density;
     public Color beamColor;
     public Vector2 animateUVs;
+    public bool transmitPower;
+    public bool generatePower;
 
     public AudioClip drainClip;
     public AudioClip infuseClip;

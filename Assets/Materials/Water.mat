@@ -18,6 +18,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Bottom:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -58,6 +62,14 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Side:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Top:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -83,8 +95,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Center: {r: 0, g: 0, b: 0, a: 1}
-    - _Color: {r: 0.6592777, g: 0.86181545, b: 0.98529404, a: 0.522}
+    - _Color: {r: 0.6592777, g: 0.86181545, b: 0.98529404, a: 0.797}
     - _EmissionColor: {r: 0.077854685, g: 0.47335646, b: 0.5294118, a: 1}
-    - _FilledTint: {r: 1, g: 1, b: 1, a: 0.5}
+    - _FilledTint: {r: 1, g: 1, b: 1, a: 1}
     - _InertColor: {r: 0.70466554, g: 0.2352941, b: 1, a: 0.072}
     - _Tint: {r: 1, g: 1, b: 1, a: 1}

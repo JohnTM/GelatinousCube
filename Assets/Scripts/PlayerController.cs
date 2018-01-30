@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
     private Animator m_animator;
 
     private float m_stunTimer;
+    private float m_fallTimer;
 
     public bool isHurt
     {
@@ -118,7 +119,7 @@ public class PlayerController : MonoBehaviour
             Transmissible t = c.GetComponent<Transmissible>();
             if (t && t.progress == 1 && t.type.bouyancy > 0)
             {
-                m_grounded = true;
+                m_grounded = true;                
                 m_ground = t.gameObject;
                 m_groundNormal = Vector3.up;
             }

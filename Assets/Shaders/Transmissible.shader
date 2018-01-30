@@ -1,5 +1,9 @@
 ﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
+// Upgrade NOTE: upgraded instancing buffer 'Props' to new syntax.
+
+// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
 // Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
 
 Shader "Custom/Transmissible" {
@@ -31,7 +35,7 @@ Shader "Custom/Transmissible" {
 
 		CGPROGRAM
 		// Physically based Standard lighting model, and enable shadows on all light types
-		#pragma surface surf Standard  vertex:vert fullforwardshadows alpha
+		#pragma surface surf Standard vertex:vert fullforwardshadows alpha
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
@@ -46,6 +50,7 @@ Shader "Custom/Transmissible" {
 			float3 viewDir;
 			float4 screenPos;
 			float eyeDepth;
+			float3 wNormal;			
 		};
 
 		half _Glossiness;
@@ -64,9 +69,9 @@ Shader "Custom/Transmissible" {
 		// Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
 		// See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
 		// #pragma instancing_options assumeuniformscaling
-		UNITY_INSTANCING_CBUFFER_START(Props)
+		UNITY_INSTANCING_BUFFER_START(Props)
 			// put more per-instance properties here
-		UNITY_INSTANCING_CBUFFER_END
+		UNITY_INSTANCING_BUFFER_END(Props)
 
 		float snoise(float3 v);
 
@@ -74,6 +79,7 @@ Shader "Custom/Transmissible" {
 		{
 			UNITY_INITIALIZE_OUTPUT(Input, o);
 			COMPUTE_EYEDEPTH(o.eyeDepth);
+			o.wNormal = mul((float3x3)unity_ObjectToWorld, v.normal);
 		}
 
 		void surf (Input IN, inout SurfaceOutputStandard o) 
@@ -91,35 +97,49 @@ Shader "Custom/Transmissible" {
 
 			float distFromCenter = length(center - IN.worldPos);
 
-			if (_Highlight > 0.0)
-			{
-				//o.Albedo = 1.0 - saturate(float3(distFromCenter, distFromCenter, distFromCenter) * 0.5);
-				//o.Emission = float3(0.0, 0.0, 0.0);
-				//o.Normal = float3(0.0, 0.0, 1.0);
-				//o.Alpha = 1;
-				//return;
-			}
-
 			if (dist > 0.0)
 			{
+
 				half depth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(IN.screenPos)));
 				half4 foamLine = 1 - saturate(_FilledFoam * (depth - IN.eyeDepth));// foam line by comparing depth and screenposition
 
+				float3 projNormal = saturate(pow(IN.wNormal * 1.4, 4));
+
+				// SIDE X
+				float3 x = tex2D(_MainTex, frac(IN.worldPos.zy * 0.7)) * abs(IN.wNormal.x);
+				float3 nx = tex2D(_NormalMap, frac(IN.worldPos.zy * 0.7)) * abs(IN.wNormal.x);
+				// TOP Y
+				float3 y = tex2D(_MainTex, frac(IN.worldPos.zx * 0.7)) * abs(IN.wNormal.y);
+				float3 ny = tex2D(_NormalMap, frac(IN.worldPos.zx * 0.7)) * abs(IN.wNormal.y);
+				// SIDE Z
+				float3 z = tex2D(_MainTex, frac(IN.worldPos.xy * 0.7)) * abs(IN.wNormal.z);
+				float3 nz = tex2D(_NormalMap, frac(IN.worldPos.xy * 0.7)) * abs(IN.wNormal.z);
+
 				// Albedo comes from a texture tinted by color
-				fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * _Color;
-				o.Albedo = c.rgb + foamLine * _FilledTint.rgb;
+
+				float3 c = z;
+				c = lerp(c, x, projNormal.x);
+				c = lerp(c, y, projNormal.y);
+				c = c *_Color;
+				o.Albedo = c + foamLine * _FilledTint.rgb;
+
+				float3 n = nz;
+				n = lerp(n, nx, projNormal.x);
+				n = normalize( lerp(n, ny, projNormal.y) );
+
+				o.Normal = UnpackNormal(float4(n.xyz,0.0));
+				//o.Normal = float3(0.0, 0.0, 1.0);
+
 				// Metallic and smoothness come from slider variables
 				o.Metallic = _Metallic;
 				o.Smoothness = _Glossiness;
-				o.Alpha = c.a;
-				o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_MainTex));
+				o.Alpha = _Color.a;
 				o.Emission = _EmissionColor.rgb * _Emission;
 			}
 			else
 			{	
 				half depth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE_PROJ(_CameraDepthTexture, UNITY_PROJ_COORD(IN.screenPos)));
 				half4 foamLine = 1 - saturate(_Foam * (depth - IN.eyeDepth));// foam line by comparing depth and screenposition
-
 
 				o.Albedo = _InertColor.rgb;
 				o.Alpha = _InertColor.a;
@@ -128,10 +148,6 @@ Shader "Custom/Transmissible" {
 				o.Emission = (foamLine * _Tint).rgb * 1.0;
 			}
 
-
-
-
-			//o.Albedo = fixed3(dist, 0.0, 0.0);
 		}
 
 		//
