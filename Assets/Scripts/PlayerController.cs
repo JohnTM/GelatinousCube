@@ -130,9 +130,9 @@ public class PlayerController : MonoBehaviour
 
 
             RaycastHit[] hits = Physics.SphereCastAll(m_rigidbody.position, 
-                                                      m_collider.radius, 
+                                                      m_collider.radius - 0.01f, 
                                                       Vector3.down, 
-                                                      m_collider.height / 2 - m_collider.radius + 0.01f, 
+                                                      m_collider.height / 2 - m_collider.radius + 0.02f, 
                                                       m_groundMask, 
                                                       QueryTriggerInteraction.Ignore);
 
