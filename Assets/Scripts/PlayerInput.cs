@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour {
         {
             bool drain = Input.GetMouseButton(0);
 
-            if (InputManager.ActiveDevice != null && InputManager.ActiveDevice.LeftTrigger.IsPressed)
+            if (InputManager.ActiveDevice != null && InputManager.ActiveDevice.LeftBumper.IsPressed)
             {
                 drain = true;
             }
@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour {
         {
             bool infuse = Input.GetMouseButton(1);
 
-            if (InputManager.ActiveDevice != null && InputManager.ActiveDevice.RightTrigger.IsPressed)
+            if (InputManager.ActiveDevice != null && InputManager.ActiveDevice.RightBumper.IsPressed)
             {
                 infuse = true;
             }
